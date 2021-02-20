@@ -29,7 +29,6 @@ export default function CircleProgressBar({ size, text, subtitle }) {
           strokeLinecap="round"
           strokeWidth="7"
           fill="transparent"
-          className={css({ stroke: 'colorOptionPrimary' })}
           style={{ transform: 'rotate(-90deg)', transformOrigin: 'center' }}
         />
         <text
