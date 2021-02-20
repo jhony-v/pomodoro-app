@@ -1,0 +1,11 @@
+{
+  "colorize.languages": [
+    "css",
+    "postcss",
+    "stylus",
+    "xml",
+    "svg",
+    "javascript",
+    "typescript"
+  ]
+}
