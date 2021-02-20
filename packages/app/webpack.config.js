@@ -46,5 +46,9 @@ module.exports = (_args, args) => {
         inject: true,
       }),
     ],
+    devServer: {
+      port: 8000,
+      compress: true,
+    },
   };
 };

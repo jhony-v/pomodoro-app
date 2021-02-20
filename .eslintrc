@@ -1,8 +1,12 @@
 {
   "root": true,
+  "parser": "babel-eslint",
   "parserOptions": {
     "ecmaVersion": 2017,
-    "sourceType": "module"
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
+    }
   },
   "env": {
     "es6": true,
@@ -14,13 +18,16 @@
     "prettier"
   ],
   "plugins": [
-    "prettier"
+    "prettier",
+    "react"
   ],
   "rules": {
     "prettier/prettier": "error",
     "arrow-spacing":"error",
     "comma-spacing":"warn",
     "newline-before-return":"error",
-    "no-var":"error"
+    "no-var":"error",
+    "react/jsx-uses-react": "error",
+    "react/jsx-uses-vars": "error"
   }
 }

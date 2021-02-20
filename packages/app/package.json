@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start:dev": "npx webpack-dev-server",
-    "build" : "npx webpack --mode=production"
+    "dev": "npx webpack serve --mode development",
+    "build": "npx webpack --mode=production"
   },
   "keywords": [],
   "author": "",
@@ -13,6 +13,8 @@
   "dependencies": {
     "@pomodoro/design": "1.0.0",
     "@pomodoro/utils": "1.0.0",
+    "effector": "^21.8.3",
+    "effector-react": "^21.2.1",
     "react": "^17.0.1",
     "react-dom": "^17.0.1"
   },
