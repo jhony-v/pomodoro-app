@@ -9,6 +9,8 @@ export const { css, styled } = createStyled({
       primary: '#3E54A3',
       primary10: '#2967B3',
       primary20: '#3B5897',
+      primaryDark: 'rgb(10,20,50)',
+      primaryDark20: 'rgb(5,10,30)',
       secondary: '#FF7E7A',
       normalText: '#FFFFFF',
       darkText: '#rgb(20,20,20)',
