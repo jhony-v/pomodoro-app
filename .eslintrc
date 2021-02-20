@@ -1,0 +1,17 @@
+{
+  "root": true,
+  "extends": [
+    "prettier"
+  ],
+  "plugins": [
+    "prettier"
+  ],
+  "rules": {
+    "prettier/prettier": "error",
+    "arrow-spacing":"error",
+    "camelcase":"error",
+    "comma-spacing":"warn",
+    "newline-before-return":"error",
+    "no-var":"error"
+  }
+}
