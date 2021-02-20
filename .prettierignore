@@ -3,3 +3,5 @@ docs
 yarn.lock
 .eslintrc
 .vscode
+README.md
+/**/*.json

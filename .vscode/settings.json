@@ -7,5 +7,7 @@
     "svg",
     "javascript",
     "typescript"
-  ]
+  ],
+  "editor.formatOnSave": true,
+  "eslint.codeActionsOnSave.mode": "all"
 }

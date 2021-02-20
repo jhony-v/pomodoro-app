@@ -8,5 +8,9 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "@pomodoro/utils" : "1.0.0",
+    "@pomodoro/design" : "1.0.0"
+  }
 }
