@@ -1,4 +1,4 @@
-import { createEvent, createStore } from 'effector';
+import { createApi, createEvent, createStore } from 'effector';
 
 function ui() {
   const $theme = createStore('');
