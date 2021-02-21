@@ -28,6 +28,8 @@
     "newline-before-return":"error",
     "no-var":"error",
     "react/jsx-uses-react": "error",
-    "react/jsx-uses-vars": "error"
+    "react/jsx-uses-vars": "error",
+    "no-return-assign":"error",
+    "no-undef":"error"
   }
 }
