@@ -17,7 +17,8 @@
     "effector-react": "^21.2.1",
     "fecha": "^4.2.0",
     "react": "^17.0.1",
-    "react-dom": "^17.0.1"
+    "react-dom": "^17.0.1",
+    "react-icons": "^4.2.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.17",

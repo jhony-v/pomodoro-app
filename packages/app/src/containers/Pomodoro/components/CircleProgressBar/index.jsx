@@ -10,7 +10,12 @@ const CircleWrapper = styled('div', {
     '10px 10px 20px rgba(20,20,20,.1), -10px -10px 30px rgba(30,40,100),5px 4px 10px rgba(0,0,0,.3)',
 });
 
-export default function CircleProgressBar({ size, text, subtitle }) {
+export default function CircleProgressBar({
+  size,
+  text,
+  subtitle,
+  onClickSubtitle,
+}) {
   const circleRef = useRef();
   useEffect(() => {
     const fill = Math.floor((size * 2 * Math.PI) / 2);
@@ -26,18 +31,18 @@ export default function CircleProgressBar({ size, text, subtitle }) {
           cx={size / 2}
           cy={size / 2}
           r={size / 2 - 10}
-          strokeLinecap="round"
-          strokeWidth="7"
-          fill="transparent"
           className={css({ stroke: 'colorOptionPrimary' })}
           style={{ transform: 'rotate(-90deg)', transformOrigin: 'center' }}
+          strokeLinecap="round"
+          fill="transparent"
+          strokeWidth="7"
         />
         <text
-          fill="white"
-          x="50%"
           y={size / 2}
           style={{ fontSize: '4rem', fontWeight: 'bold' }}
-          text-anchor="middle"
+          textAnchor="middle"
+          fill="white"
+          x="50%"
         >
           {text}
         </text>
@@ -45,8 +50,9 @@ export default function CircleProgressBar({ size, text, subtitle }) {
           fill="white"
           x="50%"
           y={size - 80}
-          text-anchor="middle"
+          textAnchor="middle"
           style={{ textTransform: 'uppercase', letterSpacing: '10px' }}
+          onClick={onClickSubtitle}
         >
           {subtitle}
         </text>

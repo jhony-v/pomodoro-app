@@ -1,6 +1,6 @@
 import { createStyled } from '@stitches/react';
 
-export const colorsBase = {
+export const baseColors = {
   colorOptionPrimary: '#FF7E7A',
   colorOptionSecondary: '#1CA0F2',
   colorOptionThird: '#ba68c8',
@@ -21,7 +21,7 @@ export const { css, styled } = createStyled({
       normalText: '#FFFFFF',
       darkText: '#rgb(20,20,20)',
       neutral: 'rgb(90,90,90)',
-      ...colorsBase,
+      ...baseColors,
     },
     fontSizes: {
       small: '.9rem',

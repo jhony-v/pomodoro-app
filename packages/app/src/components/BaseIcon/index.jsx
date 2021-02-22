@@ -4,6 +4,8 @@ import { styled } from '@pomodoro/design';
 const Iconic = styled('span', {
   display: 'inline-block',
   color: 'neutral',
+  alignItems: 'center',
+  transition: '.3s',
   variants: {
     active: {
       true: {
@@ -13,11 +15,10 @@ const Iconic = styled('span', {
   },
 });
 
-export default function BaseIcon({ children, icon: IconComponent }) {
+export default function BaseIcon({ icon: IconComponent, onClick, active }) {
   return (
-    <Iconic>
-      <IconComponent />
-      {children}
+    <Iconic onClick={onClick} active={active}>
+      <IconComponent size={25} />
     </Iconic>
   );
 }

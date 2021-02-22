@@ -17,7 +17,8 @@ function timer({ initialSeconds = 0 } = {}) {
 
   const runningApi = createApi($running, {
     onStart: () => true,
-    onStop: () => false,
+    onPause: () => false,
+    onToggleRunning: (value) => !value,
   });
 
   $seconds
@@ -30,7 +31,7 @@ function timer({ initialSeconds = 0 } = {}) {
       setTimeout(() => decrement(), 1000);
     }
     if (seconds === 0) {
-      runningApi.onStop();
+      runningApi.onPause();
     }
   });
 

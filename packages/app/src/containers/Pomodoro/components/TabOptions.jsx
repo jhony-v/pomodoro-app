@@ -2,14 +2,11 @@ import { styled } from '@pomodoro/design';
 import React, { useCallback, useEffect, useState } from 'react';
 import BaseButton from '../../../components/BaseButton';
 
-const Wrapper = styled(BaseButton, {
-  backgroundColor: 'primaryDark20',
-  display: 'flex',
-  alignItems: 'center',
-});
-
 const Option = styled(BaseButton, {
-  fontWeight: 'bold',
+  ':disabled': {
+    backgroundColor: 'transparent',
+    color: 'neutral',
+  },
   variants: {
     deactive: {
       true: {
@@ -20,32 +17,50 @@ const Option = styled(BaseButton, {
   },
 });
 
+const Wrapper = styled(BaseButton, {
+  backgroundColor: 'primaryDark20',
+  display: 'flex',
+  alignItems: 'center',
+  marginTop: 3,
+  marginBottom: 3,
+});
+
 export default function TabOptions({
   variant = 'primary',
   options,
+  disabled,
   dispatchOptionSelected,
 }) {
   const [option, setOption] = useState({
-    value: 1,
+    key: 0,
+    value: 0,
   });
 
   const onOptionSelected = useCallback(
-    (key) => {
-      setOption(key);
+    (value) => {
+      setOption(value);
     },
     [setOption]
   );
 
-  useEffect(() => dispatchOptionSelected(option), [option]);
+  useEffect(() => {
+    onOptionSelected({
+      key: 0,
+      value: options[0].value,
+    });
+  }, []);
+
+  useEffect(() => dispatchOptionSelected(option.value), [option]);
 
   return (
     <Wrapper as="div">
-      {options.map((item) => (
+      {options.map((item, key) => (
         <Option
-          key={item.value}
-          onClick={() => onOptionSelected(item)}
-          variant={option.value === item.value && variant}
-          deactive={option.value !== item.value}
+          key={key}
+          onClick={() => onOptionSelected({ key, value: item.value })}
+          variant={option.key === key && variant}
+          deactive={option.key !== key}
+          disabled={disabled}
         >
           {item.children}
         </Option>
