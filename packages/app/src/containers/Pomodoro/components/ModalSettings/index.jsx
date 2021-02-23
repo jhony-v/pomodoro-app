@@ -1,8 +1,14 @@
 import React from 'react';
-import { Modal, Text, Divider, WrapperModal } from './index.styles';
+import {
+  Modal,
+  Text,
+  Divider,
+  WrapperModal,
+  BaseButtonFloating,
+} from './index.styles';
 import { MdClose } from 'react-icons/md';
-import { css } from '@pomodoro/design';
 import EditInput from '../../../../components/EditInput';
+import BaseButton from '../../../../components/BaseButton';
 
 export default function ModalSettings() {
   return (
@@ -16,15 +22,13 @@ export default function ModalSettings() {
             </div>
           </WrapperModal>
         </Divider>
-        <Divider variant="row">
-          <div className={css({ width: '100%' })}>
-            <Text font="subtitle">TIME (MINUTES)</Text>
-            <WrapperModal spacing={10} variant="grid">
-              <EditInput subtitle="pomodoro" type="number" />
-              <EditInput subtitle="short break" type="number" />
-              <EditInput subtitle="link break" type="number" />
-            </WrapperModal>
-          </div>
+        <Divider variant="col">
+          <Text font="subtitle">TIME (MINUTES)</Text>
+          <WrapperModal spacing={10} variant="grid">
+            <EditInput subtitle="pomodoro" type="number" />
+            <EditInput subtitle="short break" type="number" />
+            <EditInput subtitle="link break" type="number" />
+          </WrapperModal>
         </Divider>
         <Divider variant="row">
           <Text font="subtitle">FONT</Text>
@@ -32,6 +36,7 @@ export default function ModalSettings() {
         <Divider variant="row">
           <Text font="subtitle">COLOR</Text>
         </Divider>
+        <BaseButtonFloating>Apply</BaseButtonFloating>
       </Modal>
     </Modal>
   );

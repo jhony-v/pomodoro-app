@@ -1,4 +1,5 @@
 import { styled } from '@pomodoro/design';
+import BaseButton from '../../../../components/BaseButton';
 
 export const Modal = styled('div', {
   variants: {
@@ -18,7 +19,7 @@ export const Modal = styled('div', {
         backgroundColor: 'card',
         borderRadius: 'small',
         width: '450px',
-        overflow: 'hidden',
+        position: 'relative',
       },
     },
   },
@@ -49,16 +50,29 @@ export const WrapperModal = styled('div', {
   },
 });
 
+export const BaseButtonFloating = styled(BaseButton, {
+  color: 'normalText',
+  display: 'block',
+  width: 'auto',
+  margin: 'auto auto -20px',
+  padding: 'sp10 30px',
+});
+
 export const Divider = styled('div', {
-  borderBottom: '1px solid silver',
-  padding: '10px 0',
+  borderBottom: '1px solid rgba(0,0,0,.1)',
+  display: 'flex',
   variants: {
     variant: {
       row: {
-        display: 'flex',
+        margin: '20px',
+        padding: '10px 0',
         alignItems: 'center',
         justifyContent: 'space-between',
+      },
+      col: {
         margin: '20px',
+        padding: '10px 0',
+        flexDirection: 'column',
       },
     },
   },
