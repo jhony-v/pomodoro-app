@@ -25,7 +25,7 @@ export const Modal = styled('div', {
   },
 });
 
-export const WrapperModal = styled('div', {
+export const Wrapper = styled('div', {
   display: 'flex',
   alignItems: 'center',
   width: '100%',

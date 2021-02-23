@@ -3,7 +3,7 @@ import {
   Modal,
   Text,
   Divider,
-  WrapperModal,
+  Wrapper,
   BaseButtonFloating,
 } from './index.styles';
 import { MdClose } from 'react-icons/md';
@@ -14,36 +14,36 @@ export default function ModalSettings() {
     <Modal type="backdrop">
       <Modal type="body">
         <Divider>
-          <WrapperModal variant="header">
+          <Wrapper variant="header">
             <Text font="title">Settings</Text>
             <div className="icon">
               <MdClose />
             </div>
-          </WrapperModal>
+          </Wrapper>
         </Divider>
         <Divider variant="col">
           <Text font="subtitle">TIME (MINUTES)</Text>
-          <WrapperModal spacing={10} variant="grid">
+          <Wrapper spacing={10} variant="grid">
             <EditInput subtitle="pomodoro" type="number" />
             <EditInput subtitle="short break" type="number" />
             <EditInput subtitle="link break" type="number" />
-          </WrapperModal>
+          </Wrapper>
         </Divider>
         <Divider variant="row">
           <Text font="subtitle">FONT</Text>
-          <WrapperModal variant="inline">
+          <Wrapper variant="inline">
             <p>a</p>
             <p>a</p>
             <p>a</p>
-          </WrapperModal>
+          </Wrapper>
         </Divider>
         <Divider variant="row">
           <Text font="subtitle">COLOR</Text>
-          <WrapperModal variant="inline">
+          <Wrapper variant="inline">
             <p>a</p>
             <p>a</p>
             <p>a</p>
-          </WrapperModal>
+          </Wrapper>
         </Divider>
         <BaseButtonFloating>Apply</BaseButtonFloating>
       </Modal>
