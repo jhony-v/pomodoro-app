@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.secondsToMinutes=void 0;var _fecha=require("fecha"),secondsToMinutes=function(a){return(0,_fecha.format)(new Date(1e3*a),"mm:ss")};exports.secondsToMinutes=secondsToMinutes;

@@ -11,13 +11,12 @@ import EditInput from '../../../../components/EditInput';
 import RoundAvatar from '../../../../components/RoundAvatar';
 import useDescriptionMinutesParser from '../../hooks/useDescriptionMinutesParser';
 import { useStore } from 'effector-react';
-import { ui } from '../../models';
+import { timer, ui } from '../../models';
 
 export default function ModalSettings({ onClose }) {
   const descriptionMinutes = useDescriptionMinutesParser();
   const themeColors = useStore(ui.$themeColors);
   const currentTheme = useStore(ui.$currentheme);
-  const baseColors = useStore(ui.$baseColors);
 
   return (
     <Modal type="backdrop">
@@ -43,7 +42,9 @@ export default function ModalSettings({ onClose }) {
                 key={key}
                 subtitle={item.children}
                 type="number"
+                name={item.name}
                 defaultValue={item.value}
+                onKeyUp={timer.changeTimerMinutes}
               />
             ))}
           </Wrapper>
@@ -57,12 +58,12 @@ export default function ModalSettings({ onClose }) {
                 bg={theme}
                 onClick={() => ui.changeTheme(theme)}
               >
-                {currentTheme === baseColors[theme] && `✓`}
+                {currentTheme === theme && `✓`}
               </RoundAvatar>
             ))}
           </Wrapper>
         </Divider>
-        <BaseButtonFloating>Apply</BaseButtonFloating>
+        <BaseButtonFloating variant={currentTheme}>Apply</BaseButtonFloating>
       </Modal>
     </Modal>
   );

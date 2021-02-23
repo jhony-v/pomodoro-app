@@ -1,14 +1,12 @@
 import { combine, createApi, createEvent, createStore } from 'effector';
-import { format } from 'fecha';
+import { secondsToMinutes } from '@pomodoro/utils';
 
 function timer({ initialSeconds = 0 } = {}) {
   // stores
   const $running = createStore(false);
   const $seconds = createStore(initialSeconds);
   const $runningCounter = combine([$running, $seconds]);
-  const $formatTime = combine($seconds, (seconds) =>
-    format(new Date(seconds * 1000), 'mm:ss')
-  );
+  const $formatTime = combine($seconds, secondsToMinutes);
 
   const $timerMinutes = createStore({
     normal: 1,
@@ -20,11 +18,21 @@ function timer({ initialSeconds = 0 } = {}) {
   const decrement = createEvent();
   const setTotalSeconds = createEvent();
   const resetCounter = createEvent();
+  const changeTimerMinutes = createEvent();
 
   const runningApi = createApi($running, {
     onStart: () => true,
     onPause: () => false,
     onToggleRunning: (value) => !value,
+  });
+
+  $timerMinutes.on(changeTimerMinutes, (timerMinutes, { target }) => {
+    const { name, value } = target;
+
+    return {
+      ...timerMinutes,
+      [name]: value,
+    };
   });
 
   $seconds
@@ -33,12 +41,8 @@ function timer({ initialSeconds = 0 } = {}) {
     .reset(resetCounter);
 
   $runningCounter.watch(([running, seconds]) => {
-    if (seconds > 0 && running) {
-      setTimeout(() => decrement(), 1000);
-    }
-    if (seconds === 0) {
-      runningApi.onPause();
-    }
+    if (seconds > 0 && running) setTimeout(() => decrement(), 1000);
+    if (seconds === 0) runningApi.onPause();
   });
 
   return {
@@ -47,6 +51,7 @@ function timer({ initialSeconds = 0 } = {}) {
     $formatTime,
     $timerMinutes,
     setTotalSeconds,
+    changeTimerMinutes,
     ...runningApi,
   };
 }

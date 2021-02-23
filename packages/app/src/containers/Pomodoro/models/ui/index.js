@@ -2,7 +2,7 @@ import { baseColors } from '@pomodoro/design';
 import { createApi, createEvent, createStore } from 'effector';
 
 function ui() {
-  const $currentheme = createStore(baseColors.primary);
+  const $currentheme = createStore('primary');
   const $themeColors = createStore(Object.keys(baseColors));
   const $baseColors = createStore(baseColors);
   const $modal = createStore(false);
@@ -13,10 +13,7 @@ function ui() {
     openModal: () => true,
     closeModal: () => false,
   });
-  $currentheme.on(
-    changeTheme,
-    (_, newTheme) => baseColors[newTheme] || baseColors.primary
-  );
+  $currentheme.on(changeTheme, (_, newTheme) => newTheme);
 
   return {
     $currentheme,

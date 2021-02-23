@@ -16,10 +16,12 @@ const Running = createStoreConsumer(timer.$running);
 const ContainerTabOptions = () => {
   const running = useStore(timer.$running);
   const data = useDescriptionMinutesParser();
+  const currentTheme = useStore(ui.$currentheme);
 
   return (
     <TabOptions
       options={data}
+      variant={currentTheme}
       dispatchOptionSelected={(value) => {
         timer.setTotalSeconds(value);
       }}
