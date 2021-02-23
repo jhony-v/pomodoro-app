@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback, useState } from 'react';
 import {
   Modal,
   Text,
@@ -17,6 +17,18 @@ export default function ModalSettings({ onClose }) {
   const descriptionMinutes = useDescriptionMinutesParser();
   const themeColors = useStore(ui.$themeColors);
   const currentTheme = useStore(ui.$currentheme);
+  const [themeSelected, setThemeSelected] = useState(() => currentTheme);
+  const onApplyNewTheme = () => {
+    ui.changeTheme(themeSelected);
+    ui.closeModal();
+  };
+
+  const onSelectTheme = useCallback(
+    (theme) => {
+      setThemeSelected(theme);
+    },
+    [setThemeSelected]
+  );
 
   return (
     <Modal type="backdrop">
@@ -56,14 +68,16 @@ export default function ModalSettings({ onClose }) {
               <RoundAvatar
                 key={index}
                 bg={theme}
-                onClick={() => ui.changeTheme(theme)}
+                onClick={() => onSelectTheme(theme)}
               >
-                {currentTheme === theme && `✓`}
+                {themeSelected === theme && `✓`}
               </RoundAvatar>
             ))}
           </Wrapper>
         </Divider>
-        <BaseButtonFloating variant={currentTheme}>Apply</BaseButtonFloating>
+        <BaseButtonFloating variant={currentTheme} onClick={onApplyNewTheme}>
+          Apply
+        </BaseButtonFloating>
       </Modal>
     </Modal>
   );
