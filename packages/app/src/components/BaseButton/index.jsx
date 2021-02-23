@@ -10,13 +10,13 @@ const Button = styled('button', {
   variants: {
     variant: {
       primary: {
-        backgroundColor: 'colorOptionPrimary',
+        backgroundColor: 'primary',
       },
       secondary: {
-        backgroundColor: 'colorOptionSecondary',
+        backgroundColor: 'secondary',
       },
       third: {
-        backgroundColor: 'colorOptionThird',
+        backgroundColor: 'third',
       },
     },
     textVariant: {

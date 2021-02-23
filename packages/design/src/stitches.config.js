@@ -1,9 +1,9 @@
 import { createStyled } from '@stitches/react';
 
 export const baseColors = {
-  colorOptionPrimary: '#FF7E7A',
-  colorOptionSecondary: '#1CA0F2',
-  colorOptionThird: '#ba68c8',
+  primary: '#FF7E7A',
+  secondary: '#1CA0F2',
+  third: '#ba68c8',
 };
 
 export const { css, styled } = createStyled({
@@ -12,12 +12,10 @@ export const { css, styled } = createStyled({
       blackAlpha5: 'rgba(0, 0, 0, 0.05)',
       blackAlpha60: 'rgba(0, 0, 0, 0.60)',
       blackAlpha80: 'rgba(0, 0, 0, 0.80)',
-      primary: '#3E54A3',
       primary10: '#2967B3',
       primary20: '#3B5897',
       primaryDark: 'rgb(10,20,50)',
       primaryDark20: 'rgb(5,10,30)',
-      secondary: '#FF7E7A',
       card: '#ffffff',
       normalText: '#FFFFFF',
       darkText: '#rgb(20,20,20)',

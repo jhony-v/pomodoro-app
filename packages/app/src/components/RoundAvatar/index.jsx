@@ -12,13 +12,13 @@ export default styled('div', {
         backgroundColor: 'neutral',
       },
       primary: {
-        backgroundColor: 'colorOptionPrimary',
+        backgroundColor: 'primary',
       },
       secondary: {
-        backgroundColor: 'colorOptionSecondary',
+        backgroundColor: 'secondary',
       },
       third: {
-        backgroundColor: 'colorOptionThird',
+        backgroundColor: 'third',
       },
     },
   },
