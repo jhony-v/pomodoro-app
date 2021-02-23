@@ -40,6 +40,9 @@ export const WrapperModal = styled('div', {
         gap: 'sp10',
         gridTemplateColumns: 'repeat(3,1fr)',
       },
+      inline: {
+        width: 'auto',
+      },
     },
     spacing: {
       10: {

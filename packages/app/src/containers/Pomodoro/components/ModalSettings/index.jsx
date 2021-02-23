@@ -8,7 +8,6 @@ import {
 } from './index.styles';
 import { MdClose } from 'react-icons/md';
 import EditInput from '../../../../components/EditInput';
-import BaseButton from '../../../../components/BaseButton';
 
 export default function ModalSettings() {
   return (
@@ -32,9 +31,19 @@ export default function ModalSettings() {
         </Divider>
         <Divider variant="row">
           <Text font="subtitle">FONT</Text>
+          <WrapperModal variant="inline">
+            <p>a</p>
+            <p>a</p>
+            <p>a</p>
+          </WrapperModal>
         </Divider>
         <Divider variant="row">
           <Text font="subtitle">COLOR</Text>
+          <WrapperModal variant="inline">
+            <p>a</p>
+            <p>a</p>
+            <p>a</p>
+          </WrapperModal>
         </Divider>
         <BaseButtonFloating>Apply</BaseButtonFloating>
       </Modal>
