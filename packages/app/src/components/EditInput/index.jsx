@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 import { styled } from '@pomodoro/design';
 
 const Text = styled('span', {
   color: 'neutral',
   fontWeight: 'bold',
+  fontSize: 'small',
 });
 
 const Input = styled('input', {
@@ -11,19 +12,21 @@ const Input = styled('input', {
   padding: 'sp10',
   width: '100%',
   fontWeight: 'bold',
+  backgroundColor: 'blackAlpha5',
+  marginTop: 'sp10',
 });
 
 const Wrapper = styled('div', {
-  [`& ${Text}`]: {
-    marginBottom: 10,
-  },
+  width: '100%',
 });
 
-export default function EditInput({ subtitle }) {
+const EditInput = forwardRef(({ subtitle, ...restProps }, ref) => {
   return (
     <Wrapper>
       <Text>{subtitle}</Text>
-      <Input />
+      <Input ref={ref} {...restProps} />
     </Wrapper>
   );
-}
+});
+
+export default EditInput;

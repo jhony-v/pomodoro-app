@@ -7,6 +7,7 @@ import { PomodoroWrapper } from './components/Wrappers';
 import { AiTwotoneSetting } from 'react-icons/ai';
 import { timer } from './models';
 import { createStoreConsumer, useStore } from 'effector-react';
+import ModalSettings from './components/ModalSettings';
 
 const FormatTime = createStoreConsumer(timer.$formatTime);
 const Running = createStoreConsumer(timer.$running);
@@ -49,6 +50,7 @@ export default function Pomodoro() {
         onClickSubtitle={timer.onToggleRunning}
       />
       <BaseIcon icon={AiTwotoneSetting} />
+      <ModalSettings />
     </PomodoroWrapper>
   );
 }

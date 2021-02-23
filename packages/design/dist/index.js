@@ -32,6 +32,7 @@ var _createStyled = (0, _react.createStyled)({
       primaryDark: 'rgb(10,20,50)',
       primaryDark20: 'rgb(5,10,30)',
       secondary: '#FF7E7A',
+      card: '#ffffff',
       normalText: '#FFFFFF',
       darkText: '#rgb(20,20,20)',
       neutral: 'rgb(90,90,90)'

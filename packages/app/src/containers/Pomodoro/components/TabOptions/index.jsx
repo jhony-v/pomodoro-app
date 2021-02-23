@@ -1,6 +1,6 @@
 import { styled } from '@pomodoro/design';
 import React, { useCallback, useEffect, useState } from 'react';
-import BaseButton from '../../../components/BaseButton';
+import BaseButton from '../../../../components/BaseButton';
 
 const Option = styled(BaseButton, {
   ':disabled': {
