@@ -1,6 +1,6 @@
 import React from 'react';
-import Pomodoro from './containers/Pomodoro';
 import './style/globalTheme';
+import Pomodoro from './containers/Pomodoro';
 
 const App = () => {
   return <Pomodoro />;

@@ -1,5 +1,6 @@
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
 import { css, styled } from '@pomodoro/design';
+import { CircularProgressbarWithChildren } from 'react-circular-progressbar';
 
 const CircleWrapper = styled('div', {
   display: 'flex',
@@ -15,48 +16,56 @@ export default function CircleProgressBar({
   text,
   subtitle,
   onClickSubtitle,
+  color,
 }) {
-  const circleRef = useRef();
-  useEffect(() => {
-    const fill = Math.floor((size * 2 * Math.PI) / 2);
-    circleRef.current.style.strokeDasharray = fill;
-    circleRef.current.style.strokeDashoffset = (100 - 50 / 100) * fill;
-  }, []);
-
   return (
     <CircleWrapper style={{ width: size + 'px', height: size + 'px' }}>
-      <svg width={size} height={size}>
-        <circle
-          ref={circleRef}
-          cx={size / 2}
-          cy={size / 2}
-          r={size / 2 - 10}
-          className={css({ stroke: 'colorOptionPrimary' })}
-          style={{ transform: 'rotate(-90deg)', transformOrigin: 'center' }}
-          strokeLinecap="round"
-          fill="transparent"
-          strokeWidth="7"
-        />
-        <text
-          y={size / 2}
-          style={{ fontSize: '4rem', fontWeight: 'bold' }}
-          textAnchor="middle"
-          fill="white"
-          x="50%"
+      <CircularProgressbarWithChildren
+        value={40}
+        styles={{
+          root: {
+            width: size + 'px',
+            height: size + 'px',
+          },
+          path: {
+            stroke: color,
+            transition: '.3s',
+          },
+          trail: {
+            stroke: 'transparent',
+          },
+        }}
+        strokeWidth={3}
+      >
+        <div
+          className={css({
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+          })}
         >
-          {text}
-        </text>
-        <text
-          fill="white"
-          x="50%"
-          y={size - 80}
-          textAnchor="middle"
-          style={{ textTransform: 'uppercase', letterSpacing: '10px' }}
-          onClick={onClickSubtitle}
-        >
-          {subtitle}
-        </text>
-      </svg>
+          <span
+            className={css({
+              fontSize: '4rem',
+              fontWeight: 'bold',
+              color: 'normalText',
+            })}
+          >
+            {text}
+          </span>
+          <span
+            className={css({
+              textTransform: 'uppercase',
+              letterSpacing: '10px',
+              color: 'normalText',
+              cursor: 'pointer',
+            })}
+            onClick={onClickSubtitle}
+          >
+            {subtitle}
+          </span>
+        </div>
+      </CircularProgressbarWithChildren>
     </CircleWrapper>
   );
 }

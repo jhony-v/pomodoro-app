@@ -16,6 +16,7 @@
     "effector": "^21.8.3",
     "effector-react": "^21.2.1",
     "react": "^17.0.1",
+    "react-circular-progressbar": "^2.0.3",
     "react-dom": "^17.0.1",
     "react-icons": "^4.2.0"
   },
@@ -31,7 +32,9 @@
     "@babel/runtime": "^7.12.18",
     "babel-loader": "^8.2.2",
     "babel-plugin-transform-react-remove-prop-types": "^0.4.24",
+    "css-loader": "^5.0.2",
     "html-webpack-plugin": "^5.2.0",
+    "style-loader": "^2.0.0",
     "webpack": "^5.23.0",
     "webpack-cli": "^4.5.0",
     "webpack-dev-server": "^3.11.2"

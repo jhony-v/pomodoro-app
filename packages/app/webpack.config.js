@@ -26,6 +26,10 @@ module.exports = (_args, args) => {
             },
           },
         },
+        {
+          test: /\.css$/i,
+          use: ['style-loader', 'css-loader'],
+        },
       ],
     },
     optimization: {

@@ -31,11 +31,15 @@ const ContainerTabOptions = () => {
 };
 
 export default function Pomodoro() {
+  const currentTheme = useStore(ui.$currentheme);
+  const baseColors = useStore(ui.$baseColors);
+
   return (
     <PomodoroWrapper>
       <Title />
       <ContainerTabOptions />
       <CircleProgressBar
+        color={baseColors[currentTheme]}
         text={<FormatTime>{(value) => value}</FormatTime>}
         subtitle={<Running>{(value) => (value ? 'Pause' : 'Start')}</Running>}
         onClickSubtitle={timer.onToggleRunning}
