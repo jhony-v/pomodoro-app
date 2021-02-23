@@ -9,6 +9,7 @@ css.global({
   'input,button,textarea': {
     outline: 'none',
     border: 'none',
+    fontFamily: 'Arial',
   },
   'body,html': {
     width: '100%',

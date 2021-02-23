@@ -1,5 +1,5 @@
 import { createStyled } from '@stitches/react';
-import { breakpoint, mediaQuery } from './utils';
+import { breakpoint } from './utils';
 
 export const baseColors = {
   primary: '#FF7E7A',

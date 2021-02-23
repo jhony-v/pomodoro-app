@@ -1,20 +1,29 @@
+import { baseColors } from '@pomodoro/design';
 import { createApi, createEvent, createStore } from 'effector';
 
 function ui() {
-  const $theme = createStore('');
+  const $currentheme = createStore(baseColors.primary);
+  const $themeColors = createStore(Object.keys(baseColors));
+  const $baseColors = createStore(baseColors);
   const $modal = createStore(false);
-  const changeTheme = createEvent();
 
   // event actions
+  const changeTheme = createEvent();
   const modalApi = createApi($modal, {
     openModal: () => true,
     closeModal: () => false,
   });
-  $theme.on(changeTheme, (_, newTheme) => newTheme);
+  $currentheme.on(
+    changeTheme,
+    (_, newTheme) => baseColors[newTheme] || baseColors.primary
+  );
 
   return {
-    $theme,
+    $currentheme,
+    $themeColors,
     $modal,
+    $baseColors,
+    changeTheme,
     ...modalApi,
   };
 }

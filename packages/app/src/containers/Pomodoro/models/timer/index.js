@@ -10,6 +10,12 @@ function timer({ initialSeconds = 0 } = {}) {
     format(new Date(seconds * 1000), 'mm:ss')
   );
 
+  const $timerMinutes = createStore({
+    normal: 1,
+    short: 5,
+    long: 25,
+  });
+
   // event actions
   const decrement = createEvent();
   const setTotalSeconds = createEvent();
@@ -22,7 +28,7 @@ function timer({ initialSeconds = 0 } = {}) {
   });
 
   $seconds
-    .on(setTotalSeconds, (_, value) => value)
+    .on(setTotalSeconds, (_, minutes) => minutes * 60)
     .on(decrement, (value) => value - 1)
     .reset(resetCounter);
 
@@ -39,6 +45,7 @@ function timer({ initialSeconds = 0 } = {}) {
     $running,
     $seconds,
     $formatTime,
+    $timerMinutes,
     setTotalSeconds,
     ...runningApi,
   };

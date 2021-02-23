@@ -45,6 +45,7 @@ export const Wrapper = styled('div', {
         width: 'auto',
         [RoundAvatar]: {
           marginRight: 'sp10',
+          fontWeight: 'bold',
         },
       },
     },
@@ -82,6 +83,9 @@ export const Divider = styled('div', {
         flexDirection: 'column',
       },
     },
+  },
+  '&:last-of-type': {
+    borderBottom: 'none',
   },
 });
 
