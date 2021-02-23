@@ -2,9 +2,9 @@
   "name": "@pomodoro/design",
   "version": "1.0.0",
   "description": "",
-  "main": "dist/index.js",
+  "main": "dist/stitches.config.js",
   "scripts": {
-    "build": "npx babel src/stitches.config.js -o dist/index.js"
+    "build": "npx babel src -d dist"
   },
   "keywords": [],
   "author": "",

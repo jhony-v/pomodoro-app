@@ -7,6 +7,8 @@ exports.styled = exports.css = exports.baseColors = void 0;
 
 var _react = require("@stitches/react");
 
+var _utils = require("./utils");
+
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -61,6 +63,16 @@ var _createStyled = (0, _react.createStyled)({
         };
       };
     }
+  },
+  breakpoints: {
+    xphone: (0, _utils.breakpoint)('320px'),
+    lphone: (0, _utils.breakpoint)('480px'),
+    stablet: (0, _utils.breakpoint)('600px'),
+    mtablet: (0, _utils.breakpoint)('768px'),
+    ltablet: (0, _utils.breakpoint)('800px'),
+    sdesktop: (0, _utils.breakpoint)('10240px'),
+    mdesktop: (0, _utils.breakpoint)('1280px'),
+    ldesktop: (0, _utils.breakpoint)('1440px')
   }
 }),
     css = _createStyled.css,

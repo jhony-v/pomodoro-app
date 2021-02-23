@@ -1,4 +1,5 @@
 import { createStyled } from '@stitches/react';
+import { breakpoint, mediaQuery } from './utils';
 
 export const baseColors = {
   primary: '#FF7E7A',
@@ -44,5 +45,15 @@ export const { css, styled } = createStyled({
       width: value,
       height: value,
     }),
+  },
+  breakpoints: {
+    xphone: breakpoint('320px'),
+    lphone: breakpoint('480px'),
+    stablet: breakpoint('600px'),
+    mtablet: breakpoint('768px'),
+    ltablet: breakpoint('800px'),
+    sdesktop: breakpoint('10240px'),
+    mdesktop: breakpoint('1280px'),
+    ldesktop: breakpoint('1440px'),
   },
 });
