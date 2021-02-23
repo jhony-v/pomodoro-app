@@ -8,6 +8,7 @@ import {
 } from './index.styles';
 import { MdClose } from 'react-icons/md';
 import EditInput from '../../../../components/EditInput';
+import RoundAvatar from '../../../../components/RoundAvatar';
 
 export default function ModalSettings() {
   return (
@@ -32,17 +33,17 @@ export default function ModalSettings() {
         <Divider variant="row">
           <Text font="subtitle">FONT</Text>
           <Wrapper variant="inline">
-            <p>a</p>
-            <p>a</p>
-            <p>a</p>
+            <RoundAvatar></RoundAvatar>
+            <RoundAvatar></RoundAvatar>
+            <RoundAvatar></RoundAvatar>
           </Wrapper>
         </Divider>
         <Divider variant="row">
           <Text font="subtitle">COLOR</Text>
           <Wrapper variant="inline">
-            <p>a</p>
-            <p>a</p>
-            <p>a</p>
+            <RoundAvatar bg="primary"></RoundAvatar>
+            <RoundAvatar bg="secondary"></RoundAvatar>
+            <RoundAvatar bg="third"></RoundAvatar>
           </Wrapper>
         </Divider>
         <BaseButtonFloating>Apply</BaseButtonFloating>

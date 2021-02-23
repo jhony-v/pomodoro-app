@@ -1,5 +1,6 @@
 import { styled } from '@pomodoro/design';
 import BaseButton from '../../../../components/BaseButton';
+import RoundAvatar from '../../../../components/RoundAvatar';
 
 export const Modal = styled('div', {
   variants: {
@@ -42,6 +43,9 @@ export const Wrapper = styled('div', {
       },
       inline: {
         width: 'auto',
+        [RoundAvatar]: {
+          marginRight: 'sp10',
+        },
       },
     },
     spacing: {

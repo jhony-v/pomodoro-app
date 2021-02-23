@@ -1,6 +1,6 @@
 import { styled } from '@pomodoro/design';
 
-export default styled('div', {
+const RoundAvatar = styled('div', {
   borderRadius: 'full',
   size: '40px',
   display: 'flex',
@@ -9,7 +9,7 @@ export default styled('div', {
   variants: {
     bg: {
       default: {
-        backgroundColor: 'neutral',
+        backgroundColor: 'blackAlpha5',
       },
       primary: {
         backgroundColor: 'primary',
@@ -23,3 +23,8 @@ export default styled('div', {
     },
   },
 });
+RoundAvatar.defaultProps = {
+  bg: 'default',
+};
+
+export default RoundAvatar;
