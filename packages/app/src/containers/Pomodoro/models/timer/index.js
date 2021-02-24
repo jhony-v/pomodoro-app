@@ -34,14 +34,15 @@ function timer() {
   const changeMinutes = createEvent();
   const changeTimerMinutes = createEvent();
 
-  const completedApi = createApi($completed, {
-    onReset: () => false,
-    onSuccess: () => true,
-  });
   const runningApi = createApi($running, {
     onStart: () => true,
     onPause: () => false,
     onToggleRunning: (value) => !value,
+  });
+
+  const completedApi = createApi($completed, {
+    onReset: () => false,
+    onSuccess: () => true,
   });
 
   $minutes.on(changeMinutes, (_, payload) => payload);
@@ -65,18 +66,22 @@ function timer() {
       return payload.value * 60;
     })
     .on(decrement, (value) => value - 1)
-    .reset(resetCounter);
+    .on(resetCounter, () => {
+      setTotalSeconds($minutes.getState());
+      completedApi.onReset();
+    });
 
   $completed.watch((completed) => {
     const audio = new Audio();
-    audio.src = require('../../assets/alarm.mp3').default;
+    audio.src = require('../../../../assets/alarm.mp3').default;
     if (completed) {
       audio.play();
     } else {
-      audio.currentTime = 0;
       audio.pause();
+      audio.currentTime = 0;
     }
   });
+
   $runningCounter.watch(([running, seconds]) => {
     if (seconds > 0 && running) setTimeout(() => decrement(), 1000);
     if (seconds === 0 && running) {
@@ -91,9 +96,12 @@ function timer() {
     $formatTime,
     $timerMinutes,
     $progressPercentaje,
+    $completed,
     setTotalSeconds,
     changeTimerMinutes,
+    resetCounter,
     ...runningApi,
+    ...completedApi,
   };
 }
 

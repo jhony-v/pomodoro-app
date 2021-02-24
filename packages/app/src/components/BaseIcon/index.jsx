@@ -8,7 +8,7 @@ const Iconic = styled('span', {
   transition: '.3s',
   variants: {
     active: {
-      true: {
+      [true]: {
         color: 'normalText',
       },
     },

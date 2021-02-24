@@ -15,11 +15,32 @@ const CircleWrapper = styled('div', {
     `,
 });
 
+const Text = styled("span", {
+  variants: {
+    variant: {
+      title: {
+        fontSize: '4rem',
+        fontWeight: 'bold',
+        color: 'normalText',
+
+      },
+      subtitle: {
+        textTransform: 'uppercase',
+        marginTop: 'sp20',
+        letterSpacing: '10px',
+        color: 'normalText',
+        lphone: {
+          cursor: 'pointer',
+        }
+      }
+    }
+  }
+})
+
 export default function CircleProgressBar({
   size,
   text,
   subtitle,
-  onClickSubtitle,
   color,
   value,
   minValue,
@@ -27,26 +48,27 @@ export default function CircleProgressBar({
 }) {
   const progressSize = size - 20;
 
+  const circularStyles = {
+    root: {
+      width: progressSize + 'px',
+      height: progressSize + 'px',
+    },
+    path: {
+      stroke: color,
+      transition: '.3s',
+    },
+    trail: {
+      stroke: 'transparent',
+    },
+  }
   return (
     <CircleWrapper style={{ width: size + 'px', height: size + 'px' }}>
       <CircularProgressbarWithChildren
         value={value}
         maxValue={maxValue}
         minValue={minValue}
-        styles={{
-          root: {
-            width: progressSize + 'px',
-            height: progressSize + 'px',
-          },
-          path: {
-            stroke: color,
-            transition: '.3s',
-          },
-          trail: {
-            stroke: 'transparent',
-          },
-        }}
         strokeWidth={3}
+        styles={circularStyles}
       >
         <div
           className={css({
@@ -55,27 +77,12 @@ export default function CircleProgressBar({
             alignItems: 'center',
           })}
         >
-          <span
-            className={css({
-              fontSize: '4rem',
-              fontWeight: 'bold',
-              color: 'normalText',
-            })}
-          >
+          <Text variant="title">
             {text}
-          </span>
-          <span
-            className={css({
-              textTransform: 'uppercase',
-              marginTop: 'sp20',
-              letterSpacing: '10px',
-              color: 'normalText',
-              cursor: 'pointer',
-            })}
-            onClick={onClickSubtitle}
-          >
+          </Text>
+          <Text variant="subtitle">
             {subtitle}
-          </span>
+          </Text>
         </div>
       </CircularProgressbarWithChildren>
     </CircleWrapper>
