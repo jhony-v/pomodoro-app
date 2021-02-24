@@ -7,7 +7,9 @@
   "scripts": {
     "dev": "npx webpack serve --mode development",
     "build": "npx rimraf dist && webpack --mode=production",
-    "test:watch": "jest --watchAll"
+    "test:watch": "jest --watchAll",
+    "predeploy" : "npm run build",
+    "deploy" : "npx gh-pages -d dist"
   },
   "keywords": [],
   "author": "",
