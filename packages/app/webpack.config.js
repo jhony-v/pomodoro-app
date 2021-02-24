@@ -30,6 +30,10 @@ module.exports = (_args, args) => {
           test: /\.css$/i,
           use: ['style-loader', 'css-loader'],
         },
+        {
+          test: /\.mp3/i,
+          use: 'file-loader',
+        },
       ],
     },
     optimization: {

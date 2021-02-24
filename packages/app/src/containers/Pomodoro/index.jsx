@@ -1,7 +1,5 @@
 import React from 'react';
 import BaseIcon from '../../components/BaseIcon';
-import CircleProgressBar from './components/CircleProgressBar';
-import TabOptions from './components/TabOptions';
 import Title from './components/Title';
 import { PomodoroWrapper } from './components/Wrappers';
 import { AiTwotoneSetting } from 'react-icons/ai';
