@@ -5,6 +5,7 @@ import { CircularProgressbarWithChildren } from 'react-circular-progressbar';
 const CircleWrapper = styled('div', {
   display: 'flex',
   justifyContent: 'center',
+  alignItems: 'center',
   margin: '20px auto',
   borderRadius: 'full',
   boxShadow:
@@ -17,15 +18,22 @@ export default function CircleProgressBar({
   subtitle,
   onClickSubtitle,
   color,
+  value,
+  minValue,
+  maxValue,
 }) {
+  const progressSize = size - 15;
+
   return (
     <CircleWrapper style={{ width: size + 'px', height: size + 'px' }}>
       <CircularProgressbarWithChildren
-        value={40}
+        value={value}
+        maxValue={maxValue}
+        minValue={minValue}
         styles={{
           root: {
-            width: size + 'px',
-            height: size + 'px',
+            width: progressSize + 'px',
+            height: progressSize + 'px',
           },
           path: {
             stroke: color,

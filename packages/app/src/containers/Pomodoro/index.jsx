@@ -33,12 +33,14 @@ const ContainerTabOptions = () => {
 export default function Pomodoro() {
   const currentTheme = useStore(ui.$currentheme);
   const baseColors = useStore(ui.$baseColors);
+  const progressPercentaje = useStore(timer.$progressPercentaje);
 
   return (
     <PomodoroWrapper>
       <Title />
       <ContainerTabOptions />
       <CircleProgressBar
+        value={progressPercentaje}
         color={baseColors[currentTheme]}
         text={<FormatTime>{(value) => value}</FormatTime>}
         subtitle={<Running>{(value) => (value ? 'Pause' : 'Start')}</Running>}
