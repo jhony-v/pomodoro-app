@@ -3,11 +3,11 @@
   "version": "1.0.0",
   "description": "Pomodoro web app",
   "main": "index.js",
+  "homepage": "https://jhony-24.github.io/pomodoro-app",
   "scripts": {
     "dev": "npx webpack serve --mode development",
     "build": "npx rimraf dist && webpack --mode=production",
-    "test:watch": "jest --watchAll",
-    "deploy": ""
+    "test:watch": "jest --watchAll"
   },
   "keywords": [],
   "author": "",
