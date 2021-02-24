@@ -33,7 +33,10 @@ export default function TabOptions({
 }) {
   const [option, setOption] = useState({
     key: 0,
-    value: 0,
+    data: {
+      type: '',
+      value: 0,
+    },
   });
 
   const onOptionSelected = useCallback(
@@ -44,25 +47,31 @@ export default function TabOptions({
   );
 
   useEffect(() => {
+    const [{ type, value }] = options;
     onOptionSelected({
       key: 0,
-      value: options[0].value,
+      data: {
+        type,
+        value,
+      },
     });
   }, []);
 
-  useEffect(() => dispatchOptionSelected(option.value), [option]);
+  useEffect(() => {
+    dispatchOptionSelected(option.data);
+  }, [option]);
 
   return (
     <Wrapper as="div">
-      {options.map((item, key) => (
+      {options.map(({ type, value, children }, key) => (
         <Option
           key={key}
-          onClick={() => onOptionSelected({ key, value: item.value })}
+          onClick={() => onOptionSelected({ key, data: { type, value } })}
           variant={option.key === key && variant}
           deactive={option.key !== key}
           disabled={disabled}
         >
-          {item.children}
+          {children}
         </Option>
       ))}
     </Wrapper>

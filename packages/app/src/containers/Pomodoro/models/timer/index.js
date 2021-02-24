@@ -1,12 +1,18 @@
 import { combine, createApi, createEvent, createStore, sample } from 'effector';
 import { secondsToMinutes } from '@pomodoro/utils';
 
-function timer({ initialSeconds = 0 } = {}) {
-  // stores
+function timer({
+  initialSeconds = 0,
+  initialMinutes = { type: 'pomodoro', value: 1 },
+} = {}) {
+  /* --------------------------------- stores --------------------------------- */
+
   const $running = createStore(false);
-  const $seconds = createStore(initialSeconds);
-  const $minutes = createStore(1);
-  const $runningCounter = combine([$running, $seconds]);
+  const $minutes = createStore(initialMinutes);
+  const $seconds = combine($minutes, (minutes) => {
+    return minutes.value * 60;
+  });
+  const $runningCounter = combine([$running, $seconds, $minutes]);
   const $formatTime = combine($seconds, secondsToMinutes);
   const $timerMinutes = createStore({
     normal: 1,
@@ -18,13 +24,12 @@ function timer({ initialSeconds = 0 } = {}) {
     $minutes,
     $seconds,
     (minutes, seconds) => {
-      minutes = minutes * 60;
-
-      return 100 - ((seconds * 100) / minutes || 100);
+      return 100 - ((seconds * 100) / (minutes.value * 60) || 100);
     }
   );
 
-  // event actions
+  /* ------------------------------ event actions ----------------------------- */
+
   const decrement = createEvent();
   const setTotalSeconds = createEvent();
   const resetCounter = createEvent();
@@ -37,28 +42,35 @@ function timer({ initialSeconds = 0 } = {}) {
     onToggleRunning: (value) => !value,
   });
 
-  $minutes.on(changeMinutes, (_, minutes) => minutes);
+  $minutes.on(changeMinutes, (_, payload) => payload);
   $timerMinutes.on(changeTimerMinutes, (timerMinutes, { target }) => {
-    const { name, value } = target;
+    const { name: type, value } = target;
+    changeMinutes({
+      type,
+      value: Number(value),
+    });
 
     return {
       ...timerMinutes,
-      [name]: value,
+      [type]: Number(value),
     };
   });
 
   $seconds
-    .on(setTotalSeconds, (_, minutes) => {
-      changeMinutes(minutes);
+    .on(setTotalSeconds, (_, payload) => {
+      changeMinutes(payload);
 
-      return minutes * 60;
+      return payload.value * 60;
     })
     .on(decrement, (value) => value - 1)
     .reset(resetCounter);
 
-  $runningCounter.watch(([running, seconds]) => {
+  $runningCounter.watch(([running, seconds, minutes]) => {
     if (seconds > 0 && running) setTimeout(() => decrement(), 1000);
-    if (seconds === 0) runningApi.onPause();
+    if (seconds === 0) {
+      runningApi.onPause();
+      setTotalSeconds(minutes);
+    }
   });
 
   return {

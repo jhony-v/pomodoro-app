@@ -6,7 +6,7 @@ export default function useMinutesParser() {
 
   return Object.keys(timerMinutes).map((timer) => {
     return {
-      name: timer,
+      type: timer,
       value: timerMinutes[timer],
     };
   });

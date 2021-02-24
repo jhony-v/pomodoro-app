@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import React, { memo } from 'react';
 import {
   Modal,
   Text,
@@ -9,27 +9,17 @@ import {
 import { MdClose } from 'react-icons/md';
 import EditInput from '../../../../components/EditInput';
 import RoundAvatar from '../../../../components/RoundAvatar';
-import useDescriptionMinutesParser from '../../hooks/useDescriptionMinutesParser';
-import { useStore } from 'effector-react';
-import { timer, ui } from '../../models';
 
-export default function ModalSettings({ onClose }) {
-  const descriptionMinutes = useDescriptionMinutesParser();
-  const themeColors = useStore(ui.$themeColors);
-  const currentTheme = useStore(ui.$currentheme);
-  const [themeSelected, setThemeSelected] = useState(() => currentTheme);
-  const onApplyNewTheme = () => {
-    ui.changeTheme(themeSelected);
-    ui.closeModal();
-  };
-
-  const onSelectTheme = useCallback(
-    (theme) => {
-      setThemeSelected(theme);
-    },
-    [setThemeSelected]
-  );
-
+function ModalSettings({
+  onClose,
+  onApplyNewTheme,
+  onSelectTheme,
+  currentTheme,
+  themeColors,
+  descriptionMinutes,
+  changeTimerMinutes,
+  themeSelected,
+}) {
   return (
     <Modal type="backdrop">
       <Modal type="body">
@@ -53,10 +43,10 @@ export default function ModalSettings({ onClose }) {
               <EditInput
                 key={key}
                 subtitle={item.children}
-                type="number"
-                name={item.name}
+                name={item.type}
                 defaultValue={item.value}
-                onKeyUp={timer.changeTimerMinutes}
+                onKeyUp={changeTimerMinutes}
+                type="number"
               />
             ))}
           </Wrapper>
@@ -82,3 +72,5 @@ export default function ModalSettings({ onClose }) {
     </Modal>
   );
 }
+
+export default memo(ModalSettings);

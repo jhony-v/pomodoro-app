@@ -5,47 +5,17 @@ import TabOptions from './components/TabOptions';
 import Title from './components/Title';
 import { PomodoroWrapper } from './components/Wrappers';
 import { AiTwotoneSetting } from 'react-icons/ai';
-import { timer, ui } from './models';
-import { createStoreConsumer, useStore } from 'effector-react';
+import { ui } from './models';
 import ModalSettingsUI from './ui/ModalSettingsUI';
-import useDescriptionMinutesParser from './hooks/useDescriptionMinutesParser';
-
-const FormatTime = createStoreConsumer(timer.$formatTime);
-const Running = createStoreConsumer(timer.$running);
-
-const ContainerTabOptions = () => {
-  const running = useStore(timer.$running);
-  const data = useDescriptionMinutesParser();
-  const currentTheme = useStore(ui.$currentheme);
-
-  return (
-    <TabOptions
-      options={data}
-      variant={currentTheme}
-      dispatchOptionSelected={(value) => {
-        timer.setTotalSeconds(value);
-      }}
-      disabled={running}
-    />
-  );
-};
+import TabOptionsUI from './ui/TabOptionsUI';
+import CircleProgressTimerUI from './ui/CircleProgressTimerUI';
 
 export default function Pomodoro() {
-  const currentTheme = useStore(ui.$currentheme);
-  const baseColors = useStore(ui.$baseColors);
-  const progressPercentaje = useStore(timer.$progressPercentaje);
-
   return (
     <PomodoroWrapper>
       <Title />
-      <ContainerTabOptions />
-      <CircleProgressBar
-        value={progressPercentaje}
-        color={baseColors[currentTheme]}
-        text={<FormatTime>{(value) => value}</FormatTime>}
-        subtitle={<Running>{(value) => (value ? 'Pause' : 'Start')}</Running>}
-        onClickSubtitle={timer.onToggleRunning}
-      />
+      <TabOptionsUI />
+      <CircleProgressTimerUI />
       <BaseIcon icon={AiTwotoneSetting} onClick={ui.openModal} />
       <ModalSettingsUI />
     </PomodoroWrapper>
