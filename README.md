@@ -1,4 +1,17 @@
-# Pomodoro App
+
+<p align="center">
+    <img src="./assets/technologies.png" alt="technologies pomodoro app" />
+</p>
+
+# Overview
+⏰ Pomodoro app using a monorepo system.
+
+# Technologies:
+* **React**: [https://reactjs.org/](https://reactjs.org/)
+* **Effector**: [https://effector.dev/](https://effector.dev/)
+* **Stitches**: [https://stitches.dev/](https://stitches.dev/)
+* **Express**: [https://expressjs.com/](https://expressjs.com/)
+* **MongoDB**: [https://www.mongodb.com/](https://www.mongodb.com/)
 
 # Features:
 * Set a Pomodoro timer and short & long break timers
