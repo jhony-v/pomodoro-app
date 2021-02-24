@@ -1,18 +1,16 @@
 import { combine, createApi, createEvent, createStore, sample } from 'effector';
 import { secondsToMinutes } from '@pomodoro/utils';
 
-function timer({
-  initialSeconds = 0,
-  initialMinutes = { type: 'pomodoro', value: 1 },
-} = {}) {
+function timer() {
   /* --------------------------------- stores --------------------------------- */
 
+  const $completed = createStore(false);
   const $running = createStore(false);
-  const $minutes = createStore(initialMinutes);
+  const $minutes = createStore({ type: 'pomodoro', value: 1 });
   const $seconds = combine($minutes, (minutes) => {
     return minutes.value * 60;
   });
-  const $runningCounter = combine([$running, $seconds, $minutes]);
+  const $runningCounter = combine([$running, $seconds]);
   const $formatTime = combine($seconds, secondsToMinutes);
   const $timerMinutes = createStore({
     normal: 1,
@@ -24,7 +22,7 @@ function timer({
     $minutes,
     $seconds,
     (minutes, seconds) => {
-      return 100 - ((seconds * 100) / (minutes.value * 60) || 100);
+      return 100 - (seconds * 100) / (minutes.value * 60);
     }
   );
 
@@ -36,6 +34,10 @@ function timer({
   const changeMinutes = createEvent();
   const changeTimerMinutes = createEvent();
 
+  const completedApi = createApi($completed, {
+    onReset: () => false,
+    onSuccess: () => true,
+  });
   const runningApi = createApi($running, {
     onStart: () => true,
     onPause: () => false,
@@ -65,11 +67,21 @@ function timer({
     .on(decrement, (value) => value - 1)
     .reset(resetCounter);
 
-  $runningCounter.watch(([running, seconds, minutes]) => {
+  $completed.watch((completed) => {
+    const audio = new Audio();
+    audio.src = require('../../assets/alarm.mp3').default;
+    if (completed) {
+      audio.play();
+    } else {
+      audio.currentTime = 0;
+      audio.pause();
+    }
+  });
+  $runningCounter.watch(([running, seconds]) => {
     if (seconds > 0 && running) setTimeout(() => decrement(), 1000);
-    if (seconds === 0) {
+    if (seconds === 0 && running) {
       runningApi.onPause();
-      setTotalSeconds(minutes);
+      completedApi.onSuccess();
     }
   });
 

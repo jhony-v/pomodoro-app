@@ -34,8 +34,8 @@ export default function TabOptions({
   const [option, setOption] = useState({
     key: 0,
     data: {
-      type: '',
-      value: 0,
+      type: 'pomodoro',
+      value: 1,
     },
   });
 
@@ -45,17 +45,6 @@ export default function TabOptions({
     },
     [setOption]
   );
-
-  useEffect(() => {
-    const [{ type, value }] = options;
-    onOptionSelected({
-      key: 0,
-      data: {
-        type,
-        value,
-      },
-    });
-  }, []);
 
   useEffect(() => {
     dispatchOptionSelected(option.data);
