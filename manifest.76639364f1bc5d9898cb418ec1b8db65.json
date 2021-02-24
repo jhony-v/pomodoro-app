@@ -1,0 +1,37 @@
+{
+  "icons": [
+    {
+      "src": "/icons/icon_1024x1024.8acf35713bcd579bedeb124fbc82840d.png",
+      "sizes": "1024x1024",
+      "type": "image/png"
+    },
+    {
+      "src": "/icons/icon_180x180.7c338a6f6efc67bf58d67d7fae0e2e46.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    },
+    {
+      "src": "/icons/icon_167x167.6616c4ab25e94ad3abea2927120d2060.png",
+      "sizes": "167x167",
+      "type": "image/png"
+    },
+    {
+      "src": "/icons/icon_152x152.c9258b32c686197e4eaa4765e662b846.png",
+      "sizes": "152x152",
+      "type": "image/png"
+    },
+    {
+      "src": "/icons/icon_120x120.7ccd1b1d6417a1dfa3ba5d1caa87bb57.png",
+      "sizes": "120x120",
+      "type": "image/png"
+    }
+  ],
+  "name": "Pomodoro",
+  "short_name": "Pomodoro",
+  "orientation": "portrait",
+  "display": "standalone",
+  "start_url": ".",
+  "theme_color": "#FF7E7A",
+  "background_color": "#FFFFFF",
+  "description": "Pomodoro application to define a timer to help you focus on your activities"
+}
