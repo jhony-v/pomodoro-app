@@ -1,6 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-var WebpackPwaManifest = require('webpack-pwa-manifest');
+const WebpackPwaManifest = require('webpack-pwa-manifest');
+const WorkboxPlugin = require('workbox-webpack-plugin');
 const { baseColors } = require('@pomodoro/design');
 
 /** @returns {import('webpack').Configuration} */
@@ -54,6 +55,7 @@ module.exports = (_args, args) => {
       new HtmlWebpackPlugin({
         template: path.resolve(__dirname, 'public/index.html'),
         inject: true,
+        title: 'Pomodoro app',
       }),
       new WebpackPwaManifest({
         name: 'Pomodoro',
@@ -71,6 +73,11 @@ module.exports = (_args, args) => {
           type: 'image/png',
           destination: path.join('icons'),
         },
+      }),
+      new WorkboxPlugin.GenerateSW({
+        clientsClaim: true,
+        skipWaiting: true,
+        maximumFileSizeToCacheInBytes: 2597152,
       }),
     ],
     devServer: {
