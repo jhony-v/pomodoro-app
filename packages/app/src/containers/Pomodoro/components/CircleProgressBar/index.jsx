@@ -8,8 +8,11 @@ const CircleWrapper = styled('div', {
   alignItems: 'center',
   margin: '20px auto',
   borderRadius: 'full',
-  boxShadow:
-    '10px 10px 20px rgba(20,20,20,.1), -10px -10px 30px rgba(30,40,100),5px 4px 10px rgba(0,0,0,.3)',
+  boxShadow: `10px 10px 20px rgba(20,20,20,.1), 
+    -10px -10px 30px #272a55,
+    5px 4px 10px rgba(0,0,0,.1), 
+    50px 30px 60px rgba(0,0,0,.3)
+    `,
 });
 
 export default function CircleProgressBar({
@@ -22,7 +25,7 @@ export default function CircleProgressBar({
   minValue,
   maxValue,
 }) {
-  const progressSize = size - 15;
+  const progressSize = size - 20;
 
   return (
     <CircleWrapper style={{ width: size + 'px', height: size + 'px' }}>
@@ -64,6 +67,7 @@ export default function CircleProgressBar({
           <span
             className={css({
               textTransform: 'uppercase',
+              marginTop: 'sp20',
               letterSpacing: '10px',
               color: 'normalText',
               cursor: 'pointer',
