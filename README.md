@@ -4,7 +4,9 @@
 </p>
 
 # Overview
-⏰ Pomodoro app using a monorepo system.
+⏰ Pomodoro web app using a monorepo system. The main feature is define a timer to help you focus on your activities.
+
+<img src="./assets/preview.png" alt="preview application" />
 
 # Technologies:
 * **React**: [https://reactjs.org/](https://reactjs.org/)

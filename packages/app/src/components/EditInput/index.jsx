@@ -14,6 +14,7 @@ const Input = styled('input', {
   fontWeight: 'bold',
   backgroundColor: 'blackAlpha5',
   marginTop: 'sp10',
+  fontFamily: 'arial',
 });
 
 const Wrapper = styled('div', {
