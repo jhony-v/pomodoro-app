@@ -19,7 +19,8 @@
   ],
   "plugins": [
     "prettier",
-    "react"
+    "react",
+    "jest"
   ],
   "rules": {
     "prettier/prettier": "error",

@@ -1,5 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+var WebpackPwaManifest = require('webpack-pwa-manifest');
+const { baseColors } = require('@pomodoro/design');
 
 /** @returns {import('webpack').Configuration} */
 module.exports = (_args, args) => {
@@ -52,6 +54,23 @@ module.exports = (_args, args) => {
       new HtmlWebpackPlugin({
         template: path.resolve(__dirname, 'public/index.html'),
         inject: true,
+      }),
+      new WebpackPwaManifest({
+        name: 'Pomodoro',
+        start_url: '.',
+        short_name: 'Pomodoro',
+        theme_color: baseColors.primary,
+        background_color: '#FFFFFF',
+        description:
+          'Pomodoro application to define a timer to help you focus on your activities',
+        orientation: 'portrait',
+        display: 'standalone',
+        icons: {
+          src: path.resolve('src/assets/logo.png'),
+          sizes: [120, 152, 167, 180, 1024],
+          type: 'image/png',
+          destination: path.join('icons'),
+        },
       }),
     ],
     devServer: {

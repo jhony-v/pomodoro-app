@@ -1,7 +1,7 @@
 {
   "name": "@pomodoro/design",
   "version": "1.0.0",
-  "description": "",
+  "description": "Design languaje to define the theme application",
   "main": "dist/stitches.config.js",
   "scripts": {
     "build": "npx babel src -d dist"

@@ -1,0 +1,16 @@
+{
+  "name": "@pomodoro/api",
+  "version": "1.0.0",
+  "description": "Api service of pomodoro app",
+  "main": "dist/index.js",
+  "scripts": {
+    "build" : "npx babel src -o dist"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^5.11.18"
+  }
+}

@@ -1,10 +1,11 @@
 {
   "name": "@pomodoro/utils",
   "version": "1.0.0",
-  "description": "",
+  "description": "Utils reusable in all packages",
   "main": "dist/index.js",
   "scripts": {
-    "build": "npx babel src/index.js -o dist/index.js"
+    "build": "npx babel src/index.js -o dist/index.js",
+    "test:watch": "npx jest --watchAll"
   },
   "keywords": [],
   "author": "",
@@ -16,6 +17,7 @@
     "@babel/cli": "^7.13.0",
     "@babel/core": "^7.13.1",
     "@babel/preset-env": "^7.13.5",
-    "babel-preset-minify": "^0.5.1"
+    "babel-preset-minify": "^0.5.1",
+    "jest": "^26.6.3"
   }
 }

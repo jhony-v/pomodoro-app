@@ -13,11 +13,20 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@babel/cli": "^7.13.0",
+    "@babel/core": "^7.13.1",
+    "@babel/preset-env": "^7.13.5",
     "babel-eslint": "^10.1.0",
+    "babel-preset-minify": "^0.5.1",
     "eslint": "^7.20.0",
     "eslint-config-prettier": "^7.2.0",
+    "eslint-plugin-jest": "^24.1.5",
     "eslint-plugin-prettier": "^3.3.1",
     "eslint-plugin-react": "^7.22.0",
     "prettier": "^2.2.1"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^5.11.18"
   }
 }
