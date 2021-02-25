@@ -3,7 +3,7 @@ docs
 yarn.lock
 .eslintrc
 .vscode
-README.md
 /**/*.json
 /**/*.html
 /**/dist
+README.md
