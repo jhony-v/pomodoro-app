@@ -1,5 +1,6 @@
-import { combine, createApi, createEvent, createStore, sample } from 'effector';
+import { combine, createApi, createEvent, createStore } from 'effector';
 import { secondsToMinutes } from '@pomodoro/utils';
+import alarm from '../../../../assets/alarm.mp3';
 
 function timer() {
   /* --------------------------------- stores --------------------------------- */
@@ -73,7 +74,7 @@ function timer() {
 
   $completed.watch((completed) => {
     const audio = new Audio();
-    audio.src = require('../../../../assets/alarm.mp3').default;
+    audio.src = alarm;
     if (completed) {
       audio.play();
     } else {

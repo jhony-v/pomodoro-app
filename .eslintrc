@@ -15,7 +15,8 @@
     "amd": true
   },
   "extends": [
-    "prettier"
+    "prettier",
+    "jest"
   ],
   "plugins": [
     "prettier",
