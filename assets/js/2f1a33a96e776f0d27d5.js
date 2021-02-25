@@ -914,9 +914,13 @@ react_dom.render( /*#__PURE__*/jsx_default()(src_App, {}), document.getElementBy
 /***/ 259:
 /***/ (() => {
 
+console.log("production");
+var prefixServiceWorkerURL =  false ? 0 : '/pomodoro-app';
+
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', function () {
-    navigator.serviceWorker.register('/service-worker.js');
+    var path = prefixServiceWorkerURL + '/service-worker.js';
+    navigator.serviceWorker.register(path);
   });
 }
 
