@@ -6,6 +6,8 @@
 # Overview
 ⏰ Pomodoro web app using a monorepo system. The main feature is define a timer to help you focus on your activities.
 
+View demo [https://jhony-24.github.io/pomodoro-app/](https://jhony-24.github.io/pomodoro-app/)
+
 <img src="./assets/preview.png" alt="preview application" />
 
 # Technologies:
