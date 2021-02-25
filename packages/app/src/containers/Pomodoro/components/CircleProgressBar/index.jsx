@@ -15,14 +15,13 @@ const CircleWrapper = styled('div', {
     `,
 });
 
-const Text = styled("span", {
+const Text = styled('span', {
   variants: {
     variant: {
       title: {
         fontSize: '4rem',
         fontWeight: 'bold',
         color: 'normalText',
-
       },
       subtitle: {
         textTransform: 'uppercase',
@@ -31,11 +30,11 @@ const Text = styled("span", {
         color: 'normalText',
         lphone: {
           cursor: 'pointer',
-        }
-      }
-    }
-  }
-})
+        },
+      },
+    },
+  },
+});
 
 export default function CircleProgressBar({
   size,
@@ -60,7 +59,8 @@ export default function CircleProgressBar({
     trail: {
       stroke: 'transparent',
     },
-  }
+  };
+
   return (
     <CircleWrapper style={{ width: size + 'px', height: size + 'px' }}>
       <CircularProgressbarWithChildren
@@ -77,12 +77,8 @@ export default function CircleProgressBar({
             alignItems: 'center',
           })}
         >
-          <Text variant="title">
-            {text}
-          </Text>
-          <Text variant="subtitle">
-            {subtitle}
-          </Text>
+          <Text variant="title">{text}</Text>
+          <Text variant="subtitle">{subtitle}</Text>
         </div>
       </CircularProgressbarWithChildren>
     </CircleWrapper>

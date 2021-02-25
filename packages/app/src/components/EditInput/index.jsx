@@ -1,7 +1,7 @@
 import React, { forwardRef } from 'react';
 import { styled } from '@pomodoro/design';
 
-const Text = styled('span', {
+const Text = styled('label', {
   color: 'neutral',
   fontWeight: 'bold',
   fontSize: 'small',
@@ -24,7 +24,9 @@ const Wrapper = styled('div', {
 const EditInput = forwardRef(({ subtitle, ...restProps }, ref) => {
   return (
     <Wrapper>
-      <Text>{subtitle}</Text>
+      <Text id={subtitle} htmlFor={subtitle}>
+        {subtitle}
+      </Text>
       <Input ref={ref} {...restProps} />
     </Wrapper>
   );
