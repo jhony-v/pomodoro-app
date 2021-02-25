@@ -1,8 +1,13 @@
 const path = require('path');
+const { baseColors } = require('@pomodoro/design');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const WebpackPwaManifest = require('webpack-pwa-manifest');
 const WorkboxPlugin = require('workbox-webpack-plugin');
-const { baseColors } = require('@pomodoro/design');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
+const TerserWebpackPlugin = require('terser-webpack-plugin');
+const publicGithubPathProduction = '/pomodoro-app/';
 
 /** @returns {import('webpack').Configuration} */
 module.exports = (_args, args) => {
@@ -13,7 +18,7 @@ module.exports = (_args, args) => {
     output: {
       path: path.resolve(__dirname, 'dist'),
       filename: 'assets/js/[contenthash].js',
-      publicPath: '/',
+      publicPath: isProduction ? publicGithubPathProduction : '/',
     },
     module: {
       rules: [
@@ -31,7 +36,7 @@ module.exports = (_args, args) => {
         },
         {
           test: /\.css$/i,
-          use: ['style-loader', 'css-loader'],
+          use: [MiniCssExtractPlugin.loader, 'css-loader'],
         },
         {
           test: /\.mp3/i,
@@ -41,17 +46,22 @@ module.exports = (_args, args) => {
     },
     optimization: {
       splitChunks: {
-        chunks: 'all',
+        chunks: 'async',
         minSize: 0,
         maxInitialRequests: 20,
         maxAsyncRequests: 20,
       },
       runtimeChunk: 'single',
+      minimize: true,
+      minimizer: [new CssMinimizerPlugin(), new TerserWebpackPlugin()],
     },
     resolve: {
       extensions: ['.js', '.jsx'],
     },
     plugins: [
+      new MiniCssExtractPlugin({
+        filename: 'assets/css/[contenthash].css',
+      }),
       new HtmlWebpackPlugin({
         template: path.resolve(__dirname, 'public/index.html'),
         inject: true,
@@ -79,6 +89,7 @@ module.exports = (_args, args) => {
         skipWaiting: true,
         maximumFileSizeToCacheInBytes: 2597152,
       }),
+      new CleanWebpackPlugin(),
     ],
     devServer: {
       port: 8000,

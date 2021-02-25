@@ -1,21 +1,10 @@
-import { styled } from '@pomodoro/design';
+import { css, styled } from '@pomodoro/design';
 import BaseButton from '../../../../components/BaseButton';
 import RoundAvatar from '../../../../components/RoundAvatar';
 
-export const Modal = styled('div', {
+export const ModalBody = styled('div', {
   variants: {
     type: {
-      backdrop: {
-        backgroundColor: 'blackAlpha60',
-        position: 'fixed',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        width: '100%',
-        height: '100%',
-        top: 0,
-        left: 0,
-      },
       body: {
         backgroundColor: 'card',
         borderRadius: 'small',
@@ -23,6 +12,19 @@ export const Modal = styled('div', {
         position: 'relative',
       },
     },
+  },
+});
+
+export const Loading = styled('div', {
+  circularLoading: {
+    size: '40px',
+    color: 'primary',
+    duration: '600ms',
+    animation: css.keyframes({
+      from: {
+        transform: 'rotate(-360deg)',
+      },
+    }),
   },
 });
 

@@ -45,6 +45,19 @@ export const { css, styled } = createStyled({
       width: value,
       height: value,
     }),
+    circularLoading: () => ({
+      size = '50px',
+      color = 'primary',
+      duration = '700ms',
+      animation,
+    }) => ({
+      borderRadius: 'full',
+      border: '3px solid transparent',
+      borderLeft: '3px solid ' + color,
+      width: size,
+      height: size,
+      animation: `${animation} ${duration} infinite linear`,
+    }),
   },
   breakpoints: {
     xphone: breakpoint('320px'),

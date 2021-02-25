@@ -1,6 +1,6 @@
 import React, { memo } from 'react';
 import {
-  Modal,
+  ModalBody,
   Text,
   Divider,
   Wrapper,
@@ -9,6 +9,7 @@ import {
 import { MdClose } from 'react-icons/md';
 import EditInput from '../../../../components/EditInput';
 import RoundAvatar from '../../../../components/RoundAvatar';
+import Backdrop from '../../../../components/Backdrop';
 
 function ModalSettings({
   onClose,
@@ -21,8 +22,8 @@ function ModalSettings({
   themeSelected,
 }) {
   return (
-    <Modal type="backdrop">
-      <Modal type="body">
+    <Backdrop>
+      <ModalBody type="body">
         <Divider>
           <Wrapper variant="header">
             <Text font="title">Settings</Text>
@@ -68,8 +69,8 @@ function ModalSettings({
         <BaseButtonFloating variant={currentTheme} onClick={onApplyNewTheme}>
           Apply
         </BaseButtonFloating>
-      </Modal>
-    </Modal>
+      </ModalBody>
+    </Backdrop>
   );
 }
 

@@ -3,11 +3,11 @@ import React, { useCallback } from 'react';
 import CircleProgressBar from '../components/CircleProgressBar';
 import { timer, ui } from '../models';
 
-
 const TitleFormatTime = () => {
   const formatTime = useStore(timer.$formatTime);
+
   return formatTime;
-}
+};
 const SubtitleManager = () => {
   const running = useStore(timer.$running);
   const completed = useStore(timer.$completed);
@@ -15,12 +15,13 @@ const SubtitleManager = () => {
     if (completed) timer.resetCounter();
     else timer.onToggleRunning();
   };
-  return <div onClick={onTimerManager}>{
-    completed ? "RESET" : (
-      running ? "PAUSE" : "START"
-    )
-  }</div>;
-}
+
+  return (
+    <div onClick={onTimerManager}>
+      {completed ? 'RESET' : running ? 'PAUSE' : 'START'}
+    </div>
+  );
+};
 
 export default function CircleProgressTimerUI() {
   const currentTheme = useStore(ui.$currentheme);
