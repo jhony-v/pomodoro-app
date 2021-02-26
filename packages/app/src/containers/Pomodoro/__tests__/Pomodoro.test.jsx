@@ -3,23 +3,24 @@ import { act, cleanup, render, screen, waitFor } from "@testing-library/react";
 import userEvent from '@testing-library/user-event'
 import Pomodoro from ".."
 
-afterEach(cleanup)
 
+beforeEach(cleanup);
 
 describe('Pomodoro', () => {
 
   beforeEach(() => {
+    render(<Pomodoro />);
     jest.useFakeTimers();
   })
   afterEach(() => {
-    jest.runOnlyPendingTimers();
     jest.useRealTimers();
   });
 
-
+  afterAll(() => {
+    jest.clearAllTimers();
+  })
 
   it('should open and close modal', async () => {
-    render(<Pomodoro />);
     expect(screen.queryByText("Settings")).toBeNull();
     userEvent.click(screen.getByLabelText("open-settings"));
     const settings = await waitFor(() => screen.getByText("Settings"));
@@ -30,14 +31,21 @@ describe('Pomodoro', () => {
 
 
   it('should start timer', () => {
-    const { getByText } = render(<Pomodoro />);
     expect(screen.getByTestId("format-time")).toHaveTextContent("01:00");
+    userEvent.click(screen.getByText("START"));
     act(() => {
-      userEvent.click(getByText("START"))
-
+      jest.advanceTimersByTime(1000);
     })
-    expect("").toBe("");
+    expect(screen.getByTestId("format-time")).toHaveTextContent("00:59");
   });
 
+  it('should stop timer', () => {
+    userEvent.click(screen.getByText("PAUSE"));
+    act(() => {
+      jest.advanceTimersByTime(1000 * 5);
+    })
+    expect(screen.getByTestId("format-time")).toHaveTextContent("00:59");
+    expect(screen.getByText("START")).toHaveTextContent("START");
+  });
 
 });

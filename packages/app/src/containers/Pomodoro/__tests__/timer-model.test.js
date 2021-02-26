@@ -20,13 +20,13 @@ describe('timer-model', () => {
   });
 
   it('should run and pause timer', () => {
-    timer.onStart();
+    timer.onToggleRunning();
     jest.advanceTimersByTime(1000);
     expect(timer.$completed.getState()).toBeFalsy();
     expect(timer.$seconds.getState()).toBeLessThan(initialSeconds);
     expect(timer.$running.getState()).toBeTruthy();
     expect(timer.$progressPercentaje.getState()).toBeGreaterThanOrEqual(0);
-    timer.onPause();
+    timer.onToggleRunning();
     expect(timer.$completed.getState()).toBeFalsy();
     expect(timer.$running.getState()).toBeFalsy();
     expect(timer.$progressPercentaje.getState()).toBeGreaterThanOrEqual(0);

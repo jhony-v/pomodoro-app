@@ -20,7 +20,6 @@ function timer() {
     short: 5,
     long: 25,
   });
-  const $soundAudio = createStore(null);
 
   const $progressPercentaje = combine(
     $minutes,
