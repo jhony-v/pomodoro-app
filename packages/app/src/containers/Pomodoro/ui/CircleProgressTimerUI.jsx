@@ -1,14 +1,14 @@
 import { useStore } from 'effector-react';
-import React, { useCallback } from 'react';
+import React, { memo } from 'react';
 import CircleProgressBar from '../components/CircleProgressBar';
 import { timer, ui } from '../models';
 
-const TitleFormatTime = () => {
+const TitleFormatTime = memo(() => {
   const formatTime = useStore(timer.$formatTime);
+  return <span data-testid="format-time">{formatTime}</span>;
+});
 
-  return formatTime;
-};
-const SubtitleManager = () => {
+const SubtitleManager = memo(() => {
   const running = useStore(timer.$running);
   const completed = useStore(timer.$completed);
   const onTimerManager = () => {
@@ -21,7 +21,7 @@ const SubtitleManager = () => {
       {completed ? 'RESET' : running ? 'PAUSE' : 'START'}
     </div>
   );
-};
+});
 
 export default function CircleProgressTimerUI() {
   const currentTheme = useStore(ui.$currentheme);

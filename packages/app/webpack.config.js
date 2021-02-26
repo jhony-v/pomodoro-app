@@ -27,11 +27,6 @@ module.exports = (_args, args) => {
           exclude: /node_modules/,
           use: {
             loader: 'babel-loader',
-            options: {
-              cacheDirectory: true,
-              cacheCompression: false,
-              envName: isProduction ? 'production' : 'development',
-            },
           },
         },
         {

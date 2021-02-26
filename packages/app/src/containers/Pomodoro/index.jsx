@@ -15,7 +15,7 @@ export default function Pomodoro() {
       <Title />
       <TabOptionsUI />
       <CircleProgressTimerUI />
-      <BaseIcon icon={AiTwotoneSetting} onClick={ui.openModal} />
+      <BaseIcon icon={AiTwotoneSetting} onClick={ui.openModal} arial-hidden="true" aria-label="open-settings" role="button" />
       <Suspense fallback={null}>
         <AsyncModalSettingsUI />
       </Suspense>

@@ -1,7 +1,5 @@
 import { ui } from '../models';
 
-jest.mock('../../../assets/alarm.mp3', () => null);
-
 describe('ui-model', () => {
   let themeColors;
   beforeAll(() => {

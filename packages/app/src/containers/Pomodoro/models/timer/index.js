@@ -2,6 +2,8 @@ import { combine, createApi, createEvent, createStore } from 'effector';
 import { secondsToMinutes } from '@pomodoro/utils';
 import alarm from '../../../../assets/alarm.mp3';
 
+const audio = new Audio();
+
 function timer() {
   /* --------------------------------- stores --------------------------------- */
 
@@ -18,6 +20,7 @@ function timer() {
     short: 5,
     long: 25,
   });
+  const $soundAudio = createStore(null);
 
   const $progressPercentaje = combine(
     $minutes,
@@ -73,18 +76,24 @@ function timer() {
     });
 
   $completed.watch((completed) => {
-    const audio = new Audio();
-    audio.src = alarm;
     if (completed) {
+      audio.src = alarm;
       audio.play();
     } else {
       audio.pause();
-      audio.currentTime = 0;
     }
   });
 
+  let interval;
   $runningCounter.watch(([running, seconds]) => {
-    if (seconds > 0 && running) setTimeout(() => decrement(), 1000);
+    if (seconds > 0 && running) {
+      interval = setTimeout(() => {
+        decrement();
+      }, 1000);
+    } else {
+      clearTimeout(interval);
+    }
+
     if (seconds === 0 && running) {
       runningApi.onPause();
       completedApi.onSuccess();

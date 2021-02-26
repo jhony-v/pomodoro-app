@@ -15,9 +15,9 @@ const Iconic = styled('span', {
   },
 });
 
-export default function BaseIcon({ icon: IconComponent, onClick, active }) {
+export default function BaseIcon({ icon: IconComponent, onClick, active, ...restProps }) {
   return (
-    <Iconic onClick={onClick} active={active}>
+    <Iconic {...restProps} onClick={onClick} active={active} >
       <IconComponent size={25} />
     </Iconic>
   );

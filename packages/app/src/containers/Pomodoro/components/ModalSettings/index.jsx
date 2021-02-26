@@ -31,7 +31,8 @@ function ModalSettings({
               className="icon"
               onClick={onClose}
               role="button"
-              aria-label="close"
+              aria-hidden="true"
+              aria-label="close-settings"
             >
               <MdClose />
             </div>

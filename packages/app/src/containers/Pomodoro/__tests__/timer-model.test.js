@@ -4,6 +4,14 @@ const initialMinutes = 1;
 const initialSeconds = initialMinutes * 60;
 
 describe('timer-model', () => {
+  beforeEach(() => {
+    jest.useFakeTimers();
+  });
+  afterEach(() => {
+    jest.runOnlyPendingTimers();
+    jest.useRealTimers();
+  });
+
   it('should have initial data in store', () => {
     expect(timer.$completed.getState()).toBeFalsy();
     expect(timer.$seconds.getState()).toEqual(initialSeconds);
@@ -13,6 +21,7 @@ describe('timer-model', () => {
 
   it('should run and pause timer', () => {
     timer.onStart();
+    jest.advanceTimersByTime(1000);
     expect(timer.$completed.getState()).toBeFalsy();
     expect(timer.$seconds.getState()).toBeLessThan(initialSeconds);
     expect(timer.$running.getState()).toBeTruthy();
