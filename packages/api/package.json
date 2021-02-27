@@ -4,13 +4,21 @@
   "description": "Api service of pomodoro app",
   "main": "dist/index.js",
   "scripts": {
-    "build" : "npx babel src -o dist"
+    "build": "npx babel src -o dist",
+    "dev": "npx nodemon ./src"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "cors": "^2.8.5",
     "express": "^4.17.1",
     "mongoose": "^5.11.18"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.13.0",
+    "@babel/core": "^7.13.8",
+    "@babel/preset-env": "^7.13.8",
+    "babel-preset-minify": "^0.5.1"
   }
 }
