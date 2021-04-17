@@ -5,19 +5,22 @@
   "main": "dist/index.js",
   "scripts": {
     "build": "npx babel src -o dist",
-    "dev": "npx nodemon ./src"
+    "dev": "npx nodemon --exec babel-node ./src"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
     "express": "^4.17.1",
-    "mongoose": "^5.11.18"
+    "mongoose": "^5.11.18",
+    "uuid": "^8.3.2"
   },
   "devDependencies": {
     "@babel/cli": "^7.13.0",
     "@babel/core": "^7.13.8",
+    "@babel/node": "^7.13.13",
     "@babel/preset-env": "^7.13.8",
     "babel-preset-minify": "^0.5.1"
   }

@@ -1,0 +1,30 @@
+
+
+POST http://localhost:7000/api/timers
+Content-Type: application/json
+
+{
+ "title" : "Task event for tomorrow",
+ "description" : "Test 1",
+ "durations" : {
+   "normal" : "10",
+   "short" : "20",
+   "long" : "30"
+ },
+ "color" : "",
+ "userId" : "607b5e81aa4f4d0644c3df4e" 
+}
+
+###
+
+POST http://localhost:7000/api/users/anonymous
+Content-Type: application/json
+
+{
+ "fromDevice" : "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.72 Safari/537.36 Edg/89.0.774.45",   
+ "theme" : "dark"
+}
+
+###
+
+GET http://localhost:7000/api/users/607b5e81aa4f4d0644c3df4e/timers
