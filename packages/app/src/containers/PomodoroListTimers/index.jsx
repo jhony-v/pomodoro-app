@@ -1,17 +1,20 @@
+import { useAutoCreateAnonymousUser } from '@pomodoro/app-service'
 import React from 'react'
 import * as DataList from "./components/DataList"
-import DataListITimerItem from './components/DataListITimerItem'
+import ButtonCreateNewTimer from './containers/ButtonCreateNewTimer'
+import CreateNewTimer from './containers/CreateNewTimer'
+import DataListTimer from './containers/DataListTimer'
 
 const PomodoroListTimers = () => {
+  useAutoCreateAnonymousUser()
   return (
     <DataList.Wrapper>
       <DataList.Body>
-        <DataListITimerItem data={{}} />
+        <DataListTimer />
+        <CreateNewTimer />
       </DataList.Body>
       <DataList.Footer>
-        <DataList.CreateTimer>
-          Add a new note to recent list
-        </DataList.CreateTimer>
+        <ButtonCreateNewTimer />
       </DataList.Footer>
     </DataList.Wrapper>
   )

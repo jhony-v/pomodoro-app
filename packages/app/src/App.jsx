@@ -4,7 +4,6 @@ import Pomodoro from './containers/Pomodoro';
 import "./registerServiceWorker";
 import PomodoroListTimers from './containers/PomodoroListTimers';
 
-
 const App = () => {
   return (
     <>

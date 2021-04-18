@@ -1,0 +1,14 @@
+{
+  "name": "@pomodoro/app-service",
+  "version": "1.0.0",
+  "description": "Pomodoro app service",
+  "main": "src/index.js",
+  "scripts": {},
+  "keywords": [],
+  "author": "jhony-24",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "swr": "^0.5.5"
+  }
+}

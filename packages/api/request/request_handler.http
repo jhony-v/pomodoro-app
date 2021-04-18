@@ -4,14 +4,14 @@ POST http://localhost:7000/api/timers
 Content-Type: application/json
 
 {
- "title" : "Task event for tomorrow",
- "description" : "Test 1",
+ "title" : "Work with friends",
+ "description" : "This event is very important because I'am work to learn the things",
  "durations" : {
-   "normal" : "10",
-   "short" : "20",
-   "long" : "30"
+   "normal" : "20",
+   "short" : "60",
+   "long" : "70"
  },
- "color" : "",
+ "color" : "purple",
  "userId" : "607b5e81aa4f4d0644c3df4e" 
 }
 

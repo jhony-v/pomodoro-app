@@ -8,7 +8,14 @@
   ],
   "scripts": {
     "lint:fix": "npx eslint --fix ./**/*",
-    "app:dev" : "cd ./packages/app && npm run dev"
+    "app:dev" : "cd ./packages/app && npm run dev",
+    "api:dev" : "cd ./packages/api && npm run dev",
+    "api:install" : "cd ./packages/api && npm install",
+    "app:install" : "cd ./packages/app && npm install",
+    "app-service:install" : "cd ./packages/app-service && npm install",
+    "utils:install" : "cd ./packages/utils && npm install",
+    "design:install" : "cd ./packages/design && npm install",
+    "packages:install" : "npm run api:install && npm run app:install && npm run app-service:install && npm run utils:install && npm run design:install"
   },
   "keywords": [],
   "author": "",
@@ -25,9 +32,5 @@
     "eslint-plugin-prettier": "^3.3.1",
     "eslint-plugin-react": "^7.22.0",
     "prettier": "^2.2.1"
-  },
-  "dependencies": {
-    "express": "^4.17.1",
-    "mongoose": "^5.11.18"
   }
 }

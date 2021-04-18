@@ -7,6 +7,7 @@ export const Wrapper = styled("section", {
   marginLeft: "200px",
   display: "flex",
   flex: "none",
+  background: "rgba(100,100,100,.2)",
   flexDirection: "column",
 })
 
@@ -26,6 +27,6 @@ export const CreateTimer = styled("button", {
   margin: "auto",
   width: "90%",
   fontWeight: "bold",
-  padding: "20px",
+  padding: 'sp10 sp5',
   borderRadius: "10px"
 })
