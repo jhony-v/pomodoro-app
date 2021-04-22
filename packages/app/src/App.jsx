@@ -1,14 +1,15 @@
 import React from 'react';
+import "./registerServiceWorker";
 import './style/globalTheme';
 import Pomodoro from './containers/Pomodoro';
-import "./registerServiceWorker";
-import PomodoroListTimers from './containers/PomodoroListTimers';
+import LazyPomodoroListTimers from './containers/PomodoroListTimers/Lazy';
+
 
 const App = () => {
   return (
     <>
       <Pomodoro />
-      <PomodoroListTimers />
+      <LazyPomodoroListTimers />
     </>
   );
 };

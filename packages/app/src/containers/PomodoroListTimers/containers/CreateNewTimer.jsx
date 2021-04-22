@@ -1,8 +1,10 @@
 import { useMutationCreateTimer } from '@pomodoro/app-service'
-import { styled } from '@pomodoro/design'
+import { styled, css } from '@pomodoro/design'
 import { useEvent, useStore } from 'effector-react'
-import React from 'react'
+import React, { useCallback, useState } from 'react'
 import BaseButton from '../../../components/BaseButton'
+import Color from '../../../components/Color'
+import ListPickerColors from '../../../components/ListPickerColors'
 import pomodoroList from '../models/pomodoroList'
 
 
@@ -11,12 +13,20 @@ const Wrapper = styled("div", {
     variant: {
       main: {
         padding: "20px 10px",
-        borderRadius: "6px"
+        borderRadius: "6px",
       },
       durations: {
         display: "grid",
         gridTemplateColumns: "repeat(3,1fr)",
         gap: "10px"
+      },
+      floating: {
+        position: "absolute",
+        bottom: "0",
+        padding: "10px",
+        borderRadius: "15px",
+        background: "rgba(0,0,50,.9)",
+        boxShadow: "0 10px 20px rgba(0,0,0,.2)"
       }
     }
   }
@@ -45,6 +55,7 @@ const CreateNewTimer = () => {
   const creatingTimer = useStore(pomodoroList.$creatingTimer);
   const newTimerData = useStore(pomodoroList.$newTimerData);
   const updateNewTimerData = useEvent(pomodoroList.updateNewTimerData);
+  const [open, setOpen] = useState(false);
   const { onAddTimer } = useMutationCreateTimer();
 
   const handlerOnAddTimer = (e) => {
@@ -53,6 +64,17 @@ const CreateNewTimer = () => {
       pomodoroList.resetCreatedNewTimerData()
     });
   }
+
+  const onToggleOpen = useCallback(() => {
+    setOpen(e => !e);
+  }, [])
+
+  const onSelectColor = (selectedColor) => {
+    pomodoroList.selectColor(selectedColor);
+    onToggleOpen();
+  }
+
+
   if (creatingTimer) {
     return (
       <Wrapper variant="main" as="form" onSubmit={handlerOnAddTimer}>
@@ -77,6 +99,26 @@ const CreateNewTimer = () => {
             <Text>Long</Text>
             <Input placeholder="long" type="number" name="durations.long" onKeyUp={updateNewTimerData} />
           </Wrapper>
+        </Wrapper>
+        <Wrapper css={css({
+          position: "relative"
+        })}>
+          <Wrapper css={css({
+            display: "flex",
+            alignItems: "center",
+            marginBottom: "10px"
+          })}>
+            <Color
+              color={newTimerData.color}
+              onClick={onToggleOpen} />
+            <Text css={css({ marginLeft: "6px" })}>Select a custom color</Text>
+          </Wrapper>
+          {open && (
+            <Wrapper variant="floating">
+              <ListPickerColors onColor={onSelectColor} />
+              <BaseButton onClick={onToggleOpen} variant="secondary">CANCELAR</BaseButton>
+            </Wrapper>
+          )}
         </Wrapper>
         <BaseButton disabled={!completedFields} >Create new timer to pomodoro</BaseButton>
       </Wrapper>

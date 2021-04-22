@@ -16,7 +16,9 @@ function Response({ data, error }) {
 }
 
 export function useGetUserTimers() {
-  const request = useSWR('/me/timers', getUserTimers);
+  const request = useSWR('/me/timers', getUserTimers, {
+    revalidateOnFocus: false,
+  });
   return Response(request);
 }
 

@@ -11,7 +11,7 @@ function pomodoroList() {
       short: '',
       long: '',
     },
-    color: '',
+    color: 'orange',
   });
   const $completedFields = $newTimerData.map(
     ({ title, description, color, durations }) => {
@@ -31,29 +31,36 @@ function pomodoroList() {
   const updateNewTimerData = createEvent();
   const setDataInPomodoroList = createEvent();
   const resetCreatedNewTimerData = createEvent();
+  const selectColor = createEvent();
+
   const creatingApi = createApi($creatingTimer, {
     activeCreateNewTimer: () => true,
     deactiveCreateTimer: () => false,
   });
 
   $listTimers.on(setDataInPomodoroList, (_, payload) => payload);
-  $newTimerData.on(updateNewTimerData, (prevState, { target }) => {
-    const { name, value } = target;
-    if (name.includes('duration')) {
-      const [, durationName] = name.split('.');
+  $newTimerData
+    .on(updateNewTimerData, (prevState, { target }) => {
+      const { name, value } = target;
+      if (name.includes('duration')) {
+        const [, durationName] = name.split('.');
+        return {
+          ...prevState,
+          durations: {
+            ...prevState.durations,
+            [durationName]: value,
+          },
+        };
+      }
       return {
         ...prevState,
-        durations: {
-          ...prevState.durations,
-          [durationName]: value,
-        },
+        [name]: value,
       };
-    }
-    return {
+    })
+    .on(selectColor, (prevState, color) => ({
       ...prevState,
-      [name]: value,
-    };
-  });
+      color,
+    }));
   $creatingTimer.reset(resetCreatedNewTimerData);
   $newTimerData.reset(resetCreatedNewTimerData);
 
@@ -63,6 +70,7 @@ function pomodoroList() {
     setDataInPomodoroList,
     $newTimerData,
     $creatingTimer,
+    selectColor,
     updateNewTimerData,
     resetCreatedNewTimerData,
     ...creatingApi,
