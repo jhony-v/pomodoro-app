@@ -23,22 +23,22 @@ View demo [https://jhony-24.github.io/pomodoro-app/](https://jhony-24.github.io/
 To use in local server you can run the next commands:
 
 * Install dependencies using the next command
-  ```console
-  npm run packages:install
+  ```bash
+  $ npm run packages:install
   ```
 * If you want to run the api service create the next files or ignore this step:
-  ```console
+  ```bash
   // Navigate to api package and create a .env file, inside create a env value
 
   MONGO_URL=mongodb://localhost:27017/pomodoro
   ```  
 * Running the application package:
-  ```console
-  npm run app:dev
+  ```bash
+  $ npm run app:dev
   ```
 * Running the api package:
-  ```console
-  npm run api:dev
+  ```bash
+  $ npm run api:dev
   ```
 
 
