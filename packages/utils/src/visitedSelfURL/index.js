@@ -3,6 +3,7 @@ export default function stepVisitedSelfURL(key = 'visited-url') {
 
   const getItem = () => JSON.parse(localStorage.getItem(key)) || [];
   const setItem = (value) => localStorage.setItem(key, JSON.stringify(value));
+  const removeItem = () => localStorage.removeItem(key);
 
   const currentPath = () => window.location.pathname;
 
@@ -21,8 +22,12 @@ export default function stepVisitedSelfURL(key = 'visited-url') {
 
   function remove() {
     if (verify()) {
-      urls.splice(urls.indexOf(currentPath()), 1);
-      setItem(urls);
+      if (urls.length === 1) {
+        removeItem();
+      } else {
+        urls.splice(urls.indexOf(currentPath()), 1);
+        setItem(urls);
+      }
     }
   }
 
