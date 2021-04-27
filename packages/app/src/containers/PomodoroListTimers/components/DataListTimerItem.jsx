@@ -8,6 +8,7 @@ const Wrapper = styled("div", {
     variant: {
       main: {
         padding: "15px 8px",
+        cursor: "pointer"
       },
     },
     flex: {
@@ -43,11 +44,15 @@ const titleClassname = css({ marginBottom: "5px" });
 const detailClassname = css({ marginLeft: "8px" });
 
 
-const DataListTimerItem = ({ data }) => {
+const DataListTimerItem = ({ data, onTimerItemSelected }) => {
   const { title, description, color } = data;
 
+  const handlerOnTimerSelected = () => {
+    onTimerItemSelected(data)
+  }
+
   return (
-    <Wrapper variant="main" flex="row">
+    <Wrapper variant="main" flex="row" onClick={handlerOnTimerSelected}>
       <Wrapper>
         <Color color={color}>{title[0]}</Color>
       </Wrapper>
