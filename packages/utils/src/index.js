@@ -1,3 +1,2 @@
-import { format } from 'fecha';
-export const secondsToMinutes = (seconds) =>
-  format(new Date(seconds * 1000), 'mm:ss');
+export { default as secondsToMinutes } from './secondsToMinutes';
+export { default as visitedSelfURL } from './visitedSelfURL';

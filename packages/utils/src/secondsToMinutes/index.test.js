@@ -1,4 +1,4 @@
-import { secondsToMinutes } from '.';
+import secondsToMinutes from '.';
 
 const dataSecondsToMinutesFormat = [
   [60, '01:00'],
