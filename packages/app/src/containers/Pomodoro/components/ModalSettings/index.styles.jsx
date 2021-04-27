@@ -45,7 +45,7 @@ export const Wrapper = styled('div', {
       },
       inline: {
         width: 'auto',
-        [RoundAvatar]: {
+        '& > *': {
           marginRight: 'sp10',
           fontWeight: 'bold',
         },

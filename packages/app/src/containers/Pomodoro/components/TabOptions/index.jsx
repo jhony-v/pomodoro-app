@@ -1,4 +1,4 @@
-import { styled } from '@pomodoro/design';
+import { styled, css } from '@pomodoro/design';
 import React, { useCallback, useEffect, useState } from 'react';
 import BaseButton from '../../../../components/BaseButton';
 
@@ -6,14 +6,6 @@ const Option = styled(BaseButton, {
   ':disabled': {
     backgroundColor: 'transparent',
     color: 'neutral',
-  },
-  variants: {
-    deactive: {
-      true: {
-        background: 'transparent',
-        color: 'neutral',
-      },
-    },
   },
 });
 
@@ -26,7 +18,7 @@ const Wrapper = styled(BaseButton, {
 });
 
 export default function TabOptions({
-  variant = 'primary',
+  color,
   options,
   disabled,
   dispatchOptionSelected,
@@ -56,8 +48,10 @@ export default function TabOptions({
         <Option
           key={key}
           onClick={() => onOptionSelected({ key, data: { type, value } })}
-          variant={option.key === key && variant}
-          deactive={option.key !== key}
+          css={css({
+            backgroundColor: option.key === key ? color : "transparent",
+            color: "white"
+          })}
           disabled={disabled}
         >
           {children}

@@ -1,4 +1,5 @@
-import { styled } from '@pomodoro/design';
+import React from "react"
+import { css, styled } from '@pomodoro/design';
 
 const RoundAvatar = styled('div', {
   borderRadius: 'full',
@@ -27,4 +28,8 @@ RoundAvatar.defaultProps = {
   bg: 'default',
 };
 
-export default RoundAvatar;
+export default ({ bg, children, onClick }) => (
+  <RoundAvatar onClick={onClick} css={css({ backgroundColor: bg })}>
+    {children}
+  </RoundAvatar>
+);

@@ -10,6 +10,7 @@ import { MdClose } from 'react-icons/md';
 import EditInput from '../../../../components/EditInput';
 import RoundAvatar from '../../../../components/RoundAvatar';
 import Backdrop from '../../../../components/Backdrop';
+import { css } from '@pomodoro/design';
 
 function ModalSettings({
   onClose,
@@ -67,7 +68,7 @@ function ModalSettings({
             ))}
           </Wrapper>
         </Divider>
-        <BaseButtonFloating variant={currentTheme} onClick={onApplyNewTheme}>
+        <BaseButtonFloating css={css({ backgroundColor: currentTheme })} onClick={onApplyNewTheme}>
           Apply
         </BaseButtonFloating>
       </ModalBody>

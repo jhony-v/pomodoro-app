@@ -1,4 +1,4 @@
-import { useEvent, useStore } from 'effector-react';
+import { useStore } from 'effector-react';
 import React, { memo } from 'react';
 import CircleProgressBar from '../components/CircleProgressBar';
 import { timer, ui } from '../models';
@@ -19,13 +19,12 @@ const SubtitleManager = memo(() => {
 
 export default function CircleProgressTimerUI() {
   const currentTheme = useStore(ui.$currentheme);
-  const baseColors = useStore(ui.$baseColors);
   const progressPercentaje = useStore(timer.$progressPercentaje);
 
   return (
     <CircleProgressBar
       value={progressPercentaje}
-      color={baseColors[currentTheme]}
+      color={currentTheme}
       text={<TitleFormatTime />}
       subtitle={<SubtitleManager />}
     />

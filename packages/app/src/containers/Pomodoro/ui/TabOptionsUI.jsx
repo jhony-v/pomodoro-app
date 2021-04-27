@@ -12,7 +12,7 @@ const TabOptionsUI = () => {
   return (
     <TabOptions
       options={data}
-      variant={currentTheme}
+      color={currentTheme}
       disabled={running}
       dispatchOptionSelected={(payload) => {
         timer.setTotalSeconds(payload);
