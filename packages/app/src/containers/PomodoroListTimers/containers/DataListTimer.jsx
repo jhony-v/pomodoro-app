@@ -3,7 +3,7 @@ import { useGetUserTimers } from '@pomodoro/app-service';
 import pomodoroList from '../models/pomodoroList';
 import { useStore } from 'effector-react';
 import DataListTimerItem from '../components/DataListTimerItem';
-import { ui } from '../../Pomodoro/models';
+import { timer, ui } from '../../Pomodoro/models';
 
 export default function DataListTimer() {
   const { data } = useGetUserTimers()
@@ -13,8 +13,9 @@ export default function DataListTimer() {
     pomodoroList.setDataInPomodoroList(data || []);
   }, [data])
 
-  const onTimerItemSelected = useCallback(({ color }) => {
+  const onTimerItemSelected = useCallback(({ color, durations }) => {
     ui.changeTheme(color)
+    timer.changeTimerMinutes(durations)
   }, []);
 
   return (

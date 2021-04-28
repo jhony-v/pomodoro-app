@@ -26,7 +26,7 @@ export default function TabOptions({
   const [option, setOption] = useState({
     key: 0,
     data: {
-      type: 'pomodoro',
+      type: 'normal',
       value: 1,
     },
   });

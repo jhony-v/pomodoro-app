@@ -9,7 +9,7 @@ function timer() {
 
   const $completed = createStore(false);
   const $running = createStore(false);
-  const $minutes = createStore({ type: 'pomodoro', value: 1 });
+  const $minutes = createStore({ type: 'normal', value: 1 });
   const $seconds = combine($minutes, (minutes) => {
     return minutes.value * 60;
   });
@@ -37,6 +37,12 @@ function timer() {
   const changeMinutes = createEvent();
   const changeTimerMinutes = createEvent();
 
+  const changeToNewMinutes = (type, value) =>
+    changeMinutes({
+      type,
+      value: Number(value),
+    });
+
   const runningApi = createApi($running, {
     onStart: () => true,
     onPause: () => false,
@@ -49,17 +55,19 @@ function timer() {
   });
 
   $minutes.on(changeMinutes, (_, payload) => payload);
-  $timerMinutes.on(changeTimerMinutes, (timerMinutes, { target }) => {
-    const { name: type, value } = target;
-    changeMinutes({
-      type,
-      value: Number(value),
-    });
+  $timerMinutes.on(changeTimerMinutes, (timerMinutes, payload) => {
+    if (payload.target) {
+      const { name: type, value } = payload.target;
+      changeToNewMinutes(type, value);
 
-    return {
-      ...timerMinutes,
-      [type]: Number(value),
-    };
+      return {
+        ...timerMinutes,
+        [type]: Number(value),
+      };
+    }
+    const typeMinuteSelected = $minutes.getState().type;
+    changeToNewMinutes(typeMinuteSelected, payload[typeMinuteSelected]);
+    return payload;
   });
 
   $seconds
