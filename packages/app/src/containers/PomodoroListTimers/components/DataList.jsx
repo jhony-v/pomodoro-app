@@ -2,9 +2,7 @@ import { styled } from '@pomodoro/design';
 
 
 export const Wrapper = styled("section", {
-  width: "350px",
-  height: "100%",
-  marginLeft: "200px",
+  width: "100%",
   display: "flex",
   flex: "none",
   background: "rgba(100,100,100,.2)",
