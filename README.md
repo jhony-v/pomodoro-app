@@ -24,7 +24,7 @@ To use in local server you can run the next commands:
 
 * Install dependencies using the next command
   ```bash
-  $ npm run packages:install
+  $ npm run start:install
   ```
 * If you want to run the api service create the next files or ignore this step:
   ```bash
