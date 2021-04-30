@@ -14,8 +14,7 @@
     "app:install" : "cd ./packages/app && npm install",
     "app-service:install" : "cd ./packages/app-service && npm install",
     "utils:install" : "cd ./packages/utils && npm install",
-    "design:install" : "cd ./packages/design && npm install",
-    "packages:install" : "npm run api:install && npm run app:install && npm run app-service:install && npm run utils:install && npm run design:install"
+    "design:install" : "cd ./packages/design && npm install"
   },
   "keywords": [],
   "author": "",
