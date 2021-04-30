@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react'
-import { css } from "@pomodoro/app-service"
+import { css } from "@pomodoro/design"
 import { useMediaQuery } from "react-responsive"
 
 const ColumnsApplication = ({ children }) => {
@@ -8,18 +8,19 @@ const ColumnsApplication = ({ children }) => {
 
   const style = useMemo(() => css({
     display: isTablet ? "flex" : "block",
-    height: "100%"
+    flex: 1,
+    alignItems: "stretch",
   }), [isTablet])
 
 
   const styleTimer = useMemo(() => css({
-    width: "100%",
-    height: "100%",
+    flex: 1,
     display: "flex",
-  }), [])
+    margin: isTablet ? "auto" : "20px 0px",
+  }), [isTablet])
 
   const styleListTimers = useMemo(() => css({
-    width: isTablet ? "430px" : "auto"
+    width: isTablet ? "340px" : "auto",
   }), [isTablet])
 
   return (

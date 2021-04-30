@@ -2,8 +2,8 @@ import { styled } from '@pomodoro/design';
 
 
 export const Wrapper = styled("section", {
-  width: "100%",
   display: "flex",
+  height: "100%",
   flex: "none",
   background: "rgba(100,100,100,.2)",
   flexDirection: "column",
